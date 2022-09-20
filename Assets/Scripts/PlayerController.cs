@@ -5,13 +5,13 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
 
-    public bool isMoving;
+    private bool _isMoving;
 
     private Vector2 _input;
 
     private void Update()
     {
-        if (!isMoving)
+        if (!_isMoving)
         {
             _input.x = Input.GetAxisRaw("Horizontal");
             _input.y = Input.GetAxisRaw("Vertical");
@@ -29,10 +29,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // This method is called a coroutine. It always must return an IEnumerator and the return furction is
+    // called with yield return null. That will tell it to skip to the next frame. It can be used for processes
+    // that need to stop and start independently of other parts of the code
     IEnumerator Move(Vector3 targetPos)
     {
-        isMoving = true;
-        
+        _isMoving = true;
+
         while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
@@ -41,6 +44,6 @@ public class PlayerController : MonoBehaviour
 
         transform.position = targetPos;
 
-        isMoving = false;
+        _isMoving = false;
     }
 }
