@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private LayerMask whatStopsMovement;
 
+    [SerializeField] private Animator anim;
+
     private void Update()
     {
         if (!_isMoving)
@@ -18,14 +20,16 @@ public class PlayerController : MonoBehaviour
             _input.x = Input.GetAxisRaw("Horizontal");
             _input.y = Input.GetAxisRaw("Vertical");
 
-            if (_input.x != 0) _input.y = 0;
+            // if (_input.x != 0) _input.y = 0;
 
             if (_input != Vector2.zero)
             {
                 var targetPos = transform.position;
 
                 // Checks whether the next movement is allowed or not (with the LayerMask)
-                if (!Physics2D.OverlapCircle(targetPos + new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0f), .2f,
+                if (!Physics2D.OverlapCircle(
+                        targetPos + new Vector3(Input.GetAxisRaw("Horizontal"),
+                            Input.GetAxisRaw("Vertical"), 0f), .2f,
                         whatStopsMovement))
                 {
                     targetPos.x += _input.x;
@@ -43,6 +47,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator Move(Vector3 targetPos)
     {
         _isMoving = true;
+        anim.SetBool("moving", true);
 
         while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon)
         {
@@ -53,5 +58,6 @@ public class PlayerController : MonoBehaviour
         transform.position = targetPos;
 
         _isMoving = false;
+        anim.SetBool("moving", false);
     }
 }

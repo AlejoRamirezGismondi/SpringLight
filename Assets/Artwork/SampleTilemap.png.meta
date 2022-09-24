@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -6107,8 +6107,8 @@ TextureImporter:
       snow-expansion_102: -571951887
       snow-expansion_5: -497309608
       snow-expansion_139: -1921676391
-      snow-expansion_132: -851013935
       snow-expansion_44: 2079620308
+      snow-expansion_132: -851013935
       snow-expansion_54: -95378448
       snow-expansion_125: 2062938512
       snow-expansion_145: -1260687296
