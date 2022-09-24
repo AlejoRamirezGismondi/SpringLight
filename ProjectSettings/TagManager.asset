@@ -13,7 +13,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - StopsMovement
   - 
   - 
   - 
@@ -43,6 +43,9 @@ TagManager:
     locked: 0
   - name: Floor
     uniqueID: 328594193
+    locked: 0
+  - name: Colliders
+    uniqueID: 1297869359
     locked: 0
   - name: Player
     uniqueID: 3695141171

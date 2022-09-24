@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 _input;
 
+    [SerializeField] private LayerMask whatStopsMovement;
+
     private void Update()
     {
         if (!_isMoving)
@@ -21,8 +23,14 @@ public class PlayerController : MonoBehaviour
             if (_input != Vector2.zero)
             {
                 var targetPos = transform.position;
-                targetPos.x += _input.x;
-                targetPos.y += _input.y;
+
+                // Checks whether the next movement is allowed or not (with the LayerMask)
+                if (!Physics2D.OverlapCircle(targetPos + new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0f), .2f,
+                        whatStopsMovement))
+                {
+                    targetPos.x += _input.x;
+                    targetPos.y += _input.y;
+                }
 
                 StartCoroutine(Move(targetPos));
             }
