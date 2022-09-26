@@ -7,47 +7,50 @@ public class PlayerController : MonoBehaviour
 
     private bool _isMoving;
 
+    private Vector2 _previousInput;
     private Vector2 _input;
 
     [SerializeField] private LayerMask whatStopsMovement;
 
     [SerializeField] private Animator anim;
+    private static readonly int Moving = Animator.StringToHash("moving");
+
+    private void Start()
+    {
+        _previousInput = Vector2.zero;
+        _input = Vector2.zero;
+    }
 
     private void Update()
     {
-        if (!_isMoving)
+        if (_isMoving) return;
+        _input.x = Input.GetAxisRaw("Horizontal");
+        _input.y = Input.GetAxisRaw("Vertical");
+
+        // if (_input.x != 0) _input.y = 0;
+
+        if (_input == Vector2.zero) return;
+        var targetPos = transform.position;
+
+        // Checks whether the next movement is allowed or not (with the LayerMask)
+        if (!Physics2D.OverlapCircle(targetPos + new Vector3(_input.x, _input.y, 0f),
+                .2f, whatStopsMovement))
         {
-            _input.x = Input.GetAxisRaw("Horizontal");
-            _input.y = Input.GetAxisRaw("Vertical");
-
-            // if (_input.x != 0) _input.y = 0;
-
-            if (_input != Vector2.zero)
-            {
-                var targetPos = transform.position;
-
-                // Checks whether the next movement is allowed or not (with the LayerMask)
-                if (!Physics2D.OverlapCircle(
-                        targetPos + new Vector3(Input.GetAxisRaw("Horizontal"),
-                            Input.GetAxisRaw("Vertical"), 0f), .2f,
-                        whatStopsMovement))
-                {
-                    targetPos.x += _input.x;
-                    targetPos.y += _input.y;
-                }
-
-                StartCoroutine(Move(targetPos));
-            }
+            // _previousInput = _input;
+            targetPos.x += _input.x;
+            targetPos.y += _input.y;
         }
+
+        StartCoroutine(Move(targetPos));
     }
 
-    // This method is called a coroutine. It always must return an IEnumerator and the return furction is
+    // This method is called a coroutine. It always must return an IEnumerator and the return function is
     // called with yield return null. That will tell it to skip to the next frame. It can be used for processes
     // that need to stop and start independently of other parts of the code
-    IEnumerator Move(Vector3 targetPos)
+    private IEnumerator Move(Vector3 targetPos)
     {
         _isMoving = true;
-        anim.SetBool("moving", true);
+        anim.SetBool(Moving, true);
 
         while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon)
         {
@@ -58,6 +61,6 @@ public class PlayerController : MonoBehaviour
         transform.position = targetPos;
 
         _isMoving = false;
-        anim.SetBool("moving", false);
+        anim.SetBool(Moving, false);
     }
 }
