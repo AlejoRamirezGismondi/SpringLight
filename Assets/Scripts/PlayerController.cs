@@ -7,17 +7,16 @@ public class PlayerController : MonoBehaviour
 
     private bool _isMoving;
 
-    private Vector2 _previousInput;
+    private bool _wasMovingInX;
     private Vector2 _input;
 
     [SerializeField] private LayerMask whatStopsMovement;
-
     [SerializeField] private Animator anim;
     private static readonly int Moving = Animator.StringToHash("moving");
 
     private void Start()
     {
-        _previousInput = Vector2.zero;
+        _wasMovingInX = false;
         _input = Vector2.zero;
     }
 
@@ -27,16 +26,23 @@ public class PlayerController : MonoBehaviour
         _input.x = Input.GetAxisRaw("Horizontal");
         _input.y = Input.GetAxisRaw("Vertical");
 
-        // if (_input.x != 0) _input.y = 0;
-
         if (_input == Vector2.zero) return;
+        
+        // Always accepts the new input. Cannot walk diagonally
+        if ((_input.x != 0) && (_input.y != 0))
+        {
+            if (_wasMovingInX) _input.x = 0;
+            else _input.y = 0;
+        }
+
+        _wasMovingInX = _input.x != 0;
+        
         var targetPos = transform.position;
 
         // Checks whether the next movement is allowed or not (with the LayerMask)
         if (!Physics2D.OverlapCircle(targetPos + new Vector3(_input.x, _input.y, 0f),
                 .2f, whatStopsMovement))
         {
-            // _previousInput = _input;
             targetPos.x += _input.x;
             targetPos.y += _input.y;
         }
