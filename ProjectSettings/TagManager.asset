@@ -50,6 +50,9 @@ TagManager:
   - name: Player
     uniqueID: 3695141171
     locked: 0
+  - name: UI
+    uniqueID: 1671955787
+    locked: 0
   - name: SceneFader
     uniqueID: 2077980601
     locked: 0
