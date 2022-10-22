@@ -1,0 +1,5 @@
+[title=cutscene1_start]
+Player: This line will be shown!
+Player: This will too! Awesome!
+[title=cutscene1_end]
+This won't.
