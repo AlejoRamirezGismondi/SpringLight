@@ -1,5 +1,5 @@
 [title=cutscene1_start]
-Player: This line will be shown!
-Player: This will too! Awesome!
+Tree: The tree basks in the sunlight
+Tree: Its leaves sway gently with the wind
 [title=cutscene1_end]
 This won't.

@@ -12,12 +12,14 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private LayerMask whatStopsMovement;
     [SerializeField] private Animator anim;
+    [SerializeField] private GameObject interactPoint;
     private static readonly int Moving = Animator.StringToHash("moving");
 
     private void Start()
     {
         _wasMovingInX = false;
         _input = Vector2.zero;
+        interactPoint = GameObject.FindGameObjectsWithTag("InteractPoint")[0];
     }
 
     private void Update()
@@ -47,6 +49,7 @@ public class PlayerController : MonoBehaviour
             targetPos.y += _input.y;
         }
 
+        interactPoint.transform.localPosition = _input.normalized;
         StartCoroutine(Move(targetPos));
     }
 
