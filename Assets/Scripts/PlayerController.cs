@@ -13,7 +13,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask whatStopsMovement;
     [SerializeField] private Animator anim;
     [SerializeField] private GameObject interactPoint;
-    private static readonly int Moving = Animator.StringToHash("moving");
+    private static readonly int MoveX = Animator.StringToHash("moveX");
+    private static readonly int MoveY = Animator.StringToHash("moveY");
+    private static readonly int isMoving = Animator.StringToHash("isMoving");
 
     private void Start()
     {
@@ -59,7 +61,8 @@ public class PlayerController : MonoBehaviour
     private IEnumerator Move(Vector3 targetPos)
     {
         _isMoving = true;
-        anim.SetBool(Moving, true);
+        anim.SetBool(isMoving, true);
+        AnimateMovement();
 
         while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon)
         {
@@ -70,6 +73,12 @@ public class PlayerController : MonoBehaviour
         transform.position = targetPos;
 
         _isMoving = false;
-        anim.SetBool(Moving, false);
+        anim.SetBool(isMoving, false);
+    }
+
+    private void AnimateMovement()
+    {
+        anim.SetFloat(MoveX, _input.normalized.x);
+        anim.SetFloat(MoveY, _input.normalized.y);
     }
 }
