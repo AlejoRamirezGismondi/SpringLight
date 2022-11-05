@@ -30,7 +30,11 @@ public class PlayerController : MonoBehaviour
         _input.x = Input.GetAxisRaw("Horizontal");
         _input.y = Input.GetAxisRaw("Vertical");
 
-        if (_input == Vector2.zero) return;
+        if (_input == Vector2.zero)
+        {
+            anim.SetBool(isMoving, false);
+            return;
+        }
         
         // Always accepts the new input. Cannot walk diagonally
         if ((_input.x != 0) && (_input.y != 0))
@@ -73,7 +77,6 @@ public class PlayerController : MonoBehaviour
         transform.position = targetPos;
 
         _isMoving = false;
-        anim.SetBool(isMoving, false);
     }
 
     private void AnimateMovement()
