@@ -27,6 +27,11 @@ public class SkinManager : MonoBehaviour
         RefreshSkin();
     }
 
+    public void RefreshSpriteLibraryAssets()
+    {
+        LoadAllSpriteLibraryAssets();
+    }
+
     private void RefreshSkin()
     {
         spriteLibrary.spriteLibraryAsset = _skins[_currentSkinNumber];
@@ -37,6 +42,5 @@ public class SkinManager : MonoBehaviour
     {
         _skins = Resources.LoadAll<SpriteLibraryAsset>("Sprite_Libraries");
         if (_currentSkinNumber > _skins.Length) _currentSkinNumber = _skins.Length - 1;
-        Debug.Log(_skins.Length);
     }
 }

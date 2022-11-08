@@ -1,43 +1,32 @@
-﻿using Unity.VisualScripting;
-using UnityEditor;
-using UnityEditor.U2D.Animation;
+﻿using UnityEditor;
 using UnityEngine;
 using UnityEngine.U2D.Animation;
 
-public static class SpriteLibraryGenerator
+public class SpriteLibraryGenerator : MonoBehaviour
 {
-    public static void GenerateSpriteLibrary(string name)
+    [SerializeField] private SkinManager skinManager;
+
+    public void GenerateSpriteLibrary(string name)
     {
-        // var spriteLib = ScriptableObject.CreateInstance<SpriteLibraryAsset>();
-        //
-        // // TODO generate methods to add all categories
-        // // TODO get sprites from folder
-        // // var sprites = ResourcesFolderLoader.LoadAllSpritesInDefault();
-        //
-        // var sprite = Resources.Load<Sprite>(name + "/" + name);
-        //
-        // spriteLib.AddCategoryLabel(sprite, "Idle_Down", "0");
-        // spriteLib.AddCategoryLabel(sprite, "Idle_Up", "4");
-        // spriteLib.AddCategoryLabel(sprite, "Idle_Right", "8");
-        // spriteLib.AddCategoryLabel(sprite, "Idle_Left", "12");
-        // spriteLib.AddCategoryLabel(sprite, "Walk_Down", "0");
-        // spriteLib.AddCategoryLabel(sprite, "Walk_Down", "1");
-        // spriteLib.AddCategoryLabel(sprite, "Walk_Down", "2");
-        // spriteLib.AddCategoryLabel(sprite, "Walk_Down", "3");
-        // spriteLib.AddCategoryLabel(sprite, "Walk_Up", "4");
-        // spriteLib.AddCategoryLabel(sprite, "Walk_Up", "5");
-        // spriteLib.AddCategoryLabel(sprite, "Walk_Up", "6");
-        // spriteLib.AddCategoryLabel(sprite, "Walk_Up", "7");
-        // spriteLib.AddCategoryLabel(sprite, "Walk_Right", "8");
-        // spriteLib.AddCategoryLabel(sprite, "Walk_Right", "9");
-        // spriteLib.AddCategoryLabel(sprite, "Walk_Right", "10");
-        // spriteLib.AddCategoryLabel(sprite, "Walk_Right", "11");
-        // spriteLib.AddCategoryLabel(sprite, "Walk_Left", "12");
-        // spriteLib.AddCategoryLabel(sprite, "Walk_Left", "13");
-        // spriteLib.AddCategoryLabel(sprite, "Walk_Left", "14");
-        // spriteLib.AddCategoryLabel(sprite, "Walk_Left", "15");
-        //
-        // AssetDatabase.CreateAsset(spriteLib, "Assets/Artwork/Character/Resources/Sprite_Libraries/" + name + ".asset");
-        // AssetDatabase.SaveAssets();
+        var spriteLib = ScriptableObject.CreateInstance<SpriteLibraryAsset>();
+        
+        var sprites = Resources.LoadAll<Sprite>(name);
+
+        for (int i = 0; i < 16; i++)
+        {
+            spriteLib.AddCategoryLabel(sprites[0], "Idle_Down", "0");
+            spriteLib.AddCategoryLabel(sprites[4], "Idle_Up", "4");
+            spriteLib.AddCategoryLabel(sprites[8], "Idle_Right", "8");
+            spriteLib.AddCategoryLabel(sprites[12], "Idle_Left", "12");
+            if (i < 4) spriteLib.AddCategoryLabel(sprites[i], "Walk_Down", i.ToString());
+            else if (i < 8) spriteLib.AddCategoryLabel(sprites[i], "Walk_Up", i.ToString());
+            else if (i < 12) spriteLib.AddCategoryLabel(sprites[i], "Walk_Right", i.ToString());
+            else spriteLib.AddCategoryLabel(sprites[i], "Walk_Left", i.ToString());
+        }
+
+        AssetDatabase.CreateAsset(spriteLib, "Assets/Artwork/Character/Resources/Sprite_Libraries/" + name + ".asset");
+        AssetDatabase.SaveAssets();
+        
+        skinManager.RefreshSpriteLibraryAssets();
     }
 }
