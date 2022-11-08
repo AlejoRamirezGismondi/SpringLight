@@ -37,7 +37,7 @@ public static class SpriteLibraryGenerator
         // spriteLib.AddCategoryLabel(sprite, "Walk_Left", "14");
         // spriteLib.AddCategoryLabel(sprite, "Walk_Left", "15");
         //
-        // AssetDatabase.CreateAsset(spriteLib, "Assets/Artwork/Character/Sprite_Libraries/" + name + ".asset");
+        // AssetDatabase.CreateAsset(spriteLib, "Assets/Artwork/Character/Resources/Sprite_Libraries/" + name + ".asset");
         // AssetDatabase.SaveAssets();
     }
 }
