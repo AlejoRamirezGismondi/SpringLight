@@ -30,6 +30,8 @@ public class SkinManager : MonoBehaviour
     public void RefreshSpriteLibraryAssets()
     {
         LoadAllSpriteLibraryAssets();
+        _currentSkinNumber = _skins.Length - 1;
+        RefreshSkin();
     }
 
     private void RefreshSkin()
