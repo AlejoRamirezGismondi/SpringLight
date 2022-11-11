@@ -1,9 +1,17 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Text;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.Serialization;
+
+[Serializable]
+public abstract class NetworkErrorHandler : MonoBehaviour
+{
+    public abstract void HandleError(string error);
+}
 
 /**
  * This class is used to get the string code from input user, make the request to the backend and save the images in the Resource folder
@@ -11,6 +19,7 @@ using UnityEngine.Networking;
 public class NetworkManager : MonoBehaviour
 {
     [SerializeField] private string uri = "http://localhost:8080/sprites/";
+    [SerializeField] private List<NetworkErrorHandler> errorHandlers;
     private SpriteLibraryGenerator _spriteLibraryGenerator;
     private string _code = "";
 
@@ -34,6 +43,13 @@ public class NetworkManager : MonoBehaviour
         // GET
         var getRequest = CreateRequest(uri + id);
         yield return getRequest.SendWebRequest();
+
+        if (getRequest.error != null)
+        {
+            HandleError(getRequest.error);
+            yield break;
+        }
+
         var deserializedGetData = JsonUtility.FromJson<SpriteDto>(getRequest.downloadHandler.text);
 
         AssetDatabase.CreateFolder("Assets/Artwork/Character/Resources", deserializedGetData.name);
@@ -56,7 +72,7 @@ public class NetworkManager : MonoBehaviour
             SaveImage(deserializedGetData.right[i], deserializedGetData.name, n);
             n++;
         }
-        
+
         // TODO MOCKING LEFT. CHANGE TO REAL ONE WHEN IMPLEMENTED
         for (int i = 0; i < deserializedGetData.right.Length; i++)
         {
@@ -66,6 +82,12 @@ public class NetworkManager : MonoBehaviour
 
         _spriteLibraryGenerator.GenerateSpriteLibrary(deserializedGetData.name);
         // Trigger continuation of game flow
+    }
+
+    private void HandleError(string error)
+    {
+        foreach (var networkErrorHandler in errorHandlers)
+            networkErrorHandler.HandleError(error);
     }
 
 
