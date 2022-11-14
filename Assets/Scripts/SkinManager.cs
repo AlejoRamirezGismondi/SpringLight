@@ -34,6 +34,16 @@ public class SkinManager : MonoBehaviour
         RefreshSkin();
     }
 
+    public int GetCurrentSkinNumber()
+    {
+        return _currentSkinNumber;
+    }
+
+    public int GetTotalSkins()
+    {
+        return _skins.Length;
+    }
+
     private void RefreshSkin()
     {
         spriteLibrary.spriteLibraryAsset = _skins[_currentSkinNumber];

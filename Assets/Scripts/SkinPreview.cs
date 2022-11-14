@@ -4,7 +4,7 @@ public class SkinPreview : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer spriteRenderer;
     private SpriteRenderer _mySpriteRenderer;
-    
+
     // Start is called before the first frame update
     void Start()
     {
