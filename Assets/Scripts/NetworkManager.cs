@@ -5,7 +5,6 @@ using System.Text;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Networking;
-using UnityEngine.Serialization;
 
 [Serializable]
 public abstract class NetworkErrorHandler : MonoBehaviour
@@ -72,11 +71,10 @@ public class NetworkManager : MonoBehaviour
             SaveImage(deserializedGetData.right[i], deserializedGetData.name, n);
             n++;
         }
-
-        // TODO MOCKING LEFT. CHANGE TO REAL ONE WHEN IMPLEMENTED
-        for (int i = 0; i < deserializedGetData.right.Length; i++)
+        
+        for (int i = 0; i < deserializedGetData.left.Length; i++)
         {
-            SaveImage(deserializedGetData.right[i], deserializedGetData.name, n);
+            SaveImage(deserializedGetData.left[i], deserializedGetData.name, n);
             n++;
         }
 
@@ -138,4 +136,5 @@ public class SpriteDto
     public string[] front;
     public string[] back;
     public string[] right;
+    public string[] left;
 }
