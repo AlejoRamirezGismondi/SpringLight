@@ -16,22 +16,22 @@ namespace Skin
 
     public static class SkinRegistry
     {
-        private static List<SkinRegister> _skinRegisters;
+        private static readonly List<SkinRegister> SkinRegisters = new();
 
         public static void AddSkin(string name, string code)
         {
-            if (Contains(code)) _skinRegisters.RemoveAll(rs => rs.Code.Equals(code));
-            _skinRegisters.Add(new SkinRegister(name, code));
+            if (Contains(code)) SkinRegisters.RemoveAll(rs => rs.Code.Equals(code));
+            SkinRegisters.Add(new SkinRegister(name, code));
         }
 
         public static bool Contains(string code)
         {
-            return _skinRegisters.Exists(sr => sr.Code.Equals(code));
+            return SkinRegisters.Exists(sr => sr.Code.Equals(code));
         }
 
         public static string GetSkinName(string code)
         {
-            if (Contains(code)) return _skinRegisters.Find(sr => sr.Code.Equals(code)).Name;
+            if (Contains(code)) return SkinRegisters.Find(sr => sr.Code.Equals(code)).Name;
             return "";
         }
     }

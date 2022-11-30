@@ -47,6 +47,7 @@ namespace Skin
             byte[] imageBytes = Convert.FromBase64String(base64[22..]);
             Texture2D tex = new Texture2D(16, 32);
             tex.LoadImage(imageBytes);
+            tex.filterMode = FilterMode.Point;
             Sprite sprite = Sprite.Create(tex, new Rect(0.0f, 0.0f, tex.width, tex.height), new Vector2(0.5f, 0.5f),
                 16.0f);
 

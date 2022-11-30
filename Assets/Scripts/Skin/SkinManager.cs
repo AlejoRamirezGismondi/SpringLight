@@ -30,12 +30,13 @@ namespace Skin
         {
             if (_code.Length > 0) _networkManager.GetSprite(_code);
         }
-        
-        public void RefreshSkin()
+
+        private void RefreshSkin()
         {
             string name = SkinRegistry.GetSkinName(_code);
             List<string> failed = new List<string>();
             AssetDatabase.DeleteAssets(new[]{$"Assets/Artwork/Character/Resources/{name}"}, failed);
+            AssetDatabase.DeleteAssets(new[]{$"Assets/Artwork/Character/Resources/Sprite_Libraries/{name}"}, failed);
             if (failed.Count <= 0) GetSkin();
         }
     }

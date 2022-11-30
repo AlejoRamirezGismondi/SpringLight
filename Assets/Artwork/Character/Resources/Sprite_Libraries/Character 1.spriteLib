@@ -83,8 +83,8 @@ MonoBehaviour:
       m_SpriteOverride: {fileID: 2105105158, guid: 2bbcb0424bbaf854b90bed58957f0ca1, type: 3}
     m_FromMain: 1
     m_EntryOverrideCount: 4
-  - m_Name: Walk_up
-    m_Hash: 1845406708
+  - m_Name: Walk_Up
+    m_Hash: -126185642
     m_CategoryList: []
     m_OverrideEntries:
     - m_Name: 4
@@ -154,8 +154,8 @@ MonoBehaviour:
       m_Sprite: {fileID: 842771445, guid: e871acb853cd46b4481c734842854f57, type: 3}
       m_FromMain: 1
       m_SpriteOverride: {fileID: 892729844, guid: 2bbcb0424bbaf854b90bed58957f0ca1, type: 3}
-    - m_Name: Pink_Character_15
-      m_Hash: 961319079
+    - m_Name: 15
+      m_Hash: -784871058
       m_Sprite: {fileID: 126621255, guid: e871acb853cd46b4481c734842854f57, type: 3}
       m_FromMain: 1
       m_SpriteOverride: {fileID: -86694594, guid: 2bbcb0424bbaf854b90bed58957f0ca1, type: 3}
