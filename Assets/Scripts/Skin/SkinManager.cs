@@ -36,8 +36,15 @@ namespace Skin
             string name = SkinRegistry.GetSkinName(_code);
             List<string> failed = new List<string>();
             AssetDatabase.DeleteAssets(new[]{$"Assets/Artwork/Character/Resources/{name}"}, failed);
-            AssetDatabase.DeleteAssets(new[]{$"Assets/Artwork/Character/Resources/Sprite_Libraries/{name}"}, failed);
+            AssetDatabase.DeleteAsset($"Assets/Artwork/Character/Resources/Sprite_Libraries/{name}");
             if (failed.Count <= 0) GetSkin();
+            else
+            {
+                foreach (var err in failed)
+                {
+                    Debug.Log(err);
+                }
+            }
         }
     }
 }
