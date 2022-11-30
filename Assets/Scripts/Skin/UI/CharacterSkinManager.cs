@@ -46,6 +46,11 @@ namespace Skin.UI
             return _skins.Length;
         }
 
+        public string GetCurrentSkinName()
+        {
+            return _skins[_currentSkinNumber].name;
+        }
+
         private void RefreshSkin()
         {
             spriteLibrary.spriteLibraryAsset = _skins[_currentSkinNumber];
@@ -56,6 +61,7 @@ namespace Skin.UI
         {
             _skins = Resources.LoadAll<SpriteLibraryAsset>("Sprite_Libraries");
             if (_currentSkinNumber > _skins.Length) _currentSkinNumber = _skins.Length - 1;
+            RefreshSkin();
         }
     }
 }
