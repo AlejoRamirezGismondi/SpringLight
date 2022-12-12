@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         if (_isMoving) return;
-        if (Input.GetKeyDown("e")) _interactTarget.Interact();
+        if (Input.GetKeyDown(KeyCode.E)) _interactTarget.Interact();
         _input.x = Input.GetAxisRaw("Horizontal");
         _input.y = Input.GetAxisRaw("Vertical");
 

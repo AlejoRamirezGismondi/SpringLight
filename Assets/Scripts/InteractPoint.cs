@@ -14,7 +14,7 @@ public class InteractPoint : MonoBehaviour
         _interactingCollider = col.GetComponent<InteractableComponent>();
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit2D(Collider2D col)
     {
         _interactingCollider = null;
     }

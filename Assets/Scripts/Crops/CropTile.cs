@@ -16,7 +16,6 @@ namespace Crops
         public override void Interact()
         {
             State = State.NextState();
-            Debug.Log("next state!");
         }
     }
 }
