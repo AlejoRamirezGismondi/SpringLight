@@ -1,19 +1,22 @@
 ﻿using Crops.CropState;
+using UnityEngine;
 
 namespace Crops
 {
-    public class CropTile
+    public class CropTile : Interactable
     {
         private CropState.CropState State { get; set; }
 
+        // Constructor
         public CropTile()
         {
             State = new UnplowedState();
         }
 
-        public void NextState()
+        public override void Interact()
         {
             State = State.NextState();
+            Debug.Log("next state!");
         }
     }
 }

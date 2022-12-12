@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask whatStopsMovement;
     [SerializeField] private Animator anim;
     [SerializeField] private GameObject interactPoint;
+    private InteractPoint _interactTarget;
     private static readonly int MoveX = Animator.StringToHash("moveX");
     private static readonly int MoveY = Animator.StringToHash("moveY");
     private static readonly int isMoving = Animator.StringToHash("isMoving");
@@ -22,11 +23,13 @@ public class PlayerController : MonoBehaviour
         _wasMovingInX = false;
         _input = Vector2.zero;
         interactPoint = GameObject.FindGameObjectsWithTag("InteractPoint")[0];
+        _interactTarget = interactPoint.GetComponent<InteractPoint>();
     }
 
     private void Update()
     {
         if (_isMoving) return;
+        if (Input.GetKeyDown("e")) _interactTarget.Interact();
         _input.x = Input.GetAxisRaw("Horizontal");
         _input.y = Input.GetAxisRaw("Vertical");
 

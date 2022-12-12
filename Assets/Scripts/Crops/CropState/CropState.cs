@@ -1,4 +1,6 @@
-﻿namespace Crops.CropState
+﻿using UnityEngine;
+
+namespace Crops.CropState
 {
     public abstract class CropState
     {
