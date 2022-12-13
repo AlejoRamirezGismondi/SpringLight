@@ -8,6 +8,7 @@ namespace Crops
         public SpriteRenderer spriteRenderer;
         public Sprite unplowed;
         public Sprite plowed;
+        public Crop Crop;
         private CropState.CropState State { get; set; }
 
         public void Start()
