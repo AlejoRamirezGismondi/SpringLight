@@ -5,17 +5,20 @@ namespace Crops
 {
     public class CropTile : Interactable
     {
+        public SpriteRenderer spriteRenderer;
+        public Sprite unplowed;
+        public Sprite plowed;
         private CropState.CropState State { get; set; }
 
-        // Constructor
-        public CropTile()
+        public void Start()
         {
-            State = new UnplowedState();
+            State = new UnplowedState(this);
+            spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         }
 
         public override void Interact()
         {
-            State = State.NextState();
+            State = State.NextState(this);
         }
     }
 }

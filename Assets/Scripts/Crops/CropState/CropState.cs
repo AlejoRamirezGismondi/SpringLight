@@ -1,23 +1,27 @@
-﻿using UnityEngine;
-
-namespace Crops.CropState
+﻿namespace Crops.CropState
 {
     public abstract class CropState
     {
-        public abstract CropState NextState();
+        public abstract CropState NextState(CropTile cropTile);
     }
     
     public class UnplowedState : CropState
     {
-        public override CropState NextState()
+        public UnplowedState(CropTile cropTile)
         {
+            cropTile.spriteRenderer.sprite = cropTile.unplowed;
+        }
+        
+        public override CropState NextState(CropTile cropTile)
+        {
+            cropTile.spriteRenderer.sprite = cropTile.plowed;
             return new PlowedState();
         }
     }
     
     public class PlowedState : CropState
     {
-        public override CropState NextState()
+        public override CropState NextState(CropTile cropTile)
         {
             return new SeededState();
         }
@@ -25,7 +29,7 @@ namespace Crops.CropState
 
     public class SeededState : CropState
     {
-        public override CropState NextState()
+        public override CropState NextState(CropTile cropTile)
         {
             return new GrowingState();
         }
@@ -33,7 +37,7 @@ namespace Crops.CropState
 
     public class GrowingState : CropState
     {
-        public override CropState NextState()
+        public override CropState NextState(CropTile cropTile)
         {
             return new GrownState();
         }
@@ -41,10 +45,10 @@ namespace Crops.CropState
 
     public class GrownState : CropState
     {
-        public override CropState NextState()
+        public override CropState NextState(CropTile cropTile)
         {
             // Do something when the crop is fully grown
-            return new UnplowedState();
+            return new UnplowedState(cropTile);
         }
     }
 }
