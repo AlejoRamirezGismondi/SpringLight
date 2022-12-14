@@ -48,6 +48,9 @@ TagManager:
   - name: Colliders
     uniqueID: 1297869359
     locked: 0
+  - name: Items
+    uniqueID: 3279149927
+    locked: 0
   - name: Player
     uniqueID: 3695141171
     locked: 0

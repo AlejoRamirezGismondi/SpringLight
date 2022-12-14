@@ -2,20 +2,21 @@
 using System.Collections.Generic;
 using Items.Scripts;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Inventory.Scripts
 {
     [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory")]
-    public class Inventory : ScriptableObject
+    public class InventoryObject : ScriptableObject
     {
         public List<InventorySlot> container = new List<InventorySlot>();
         
-        public void AddItem(Item item, int amount)
+        public void AddItem(ItemObject itemObject, int amount)
         {
             bool hasItem = false;
             foreach (var slot in container)
             {
-                if (slot.item == item)
+                if (slot.itemObject == itemObject)
                 {
                     slot.amount += amount;
                     hasItem = true;
@@ -24,7 +25,7 @@ namespace Inventory.Scripts
 
             if (!hasItem)
             {
-                container.Add(new InventorySlot(item, amount));
+                container.Add(new InventorySlot(itemObject, amount));
             }
         }
     }
@@ -32,11 +33,11 @@ namespace Inventory.Scripts
     [Serializable]
     public class InventorySlot
     {
-        public Item item;
+        public ItemObject itemObject;
         public int amount;
-        public InventorySlot(Item item, int amount)
+        public InventorySlot(ItemObject itemObject, int amount)
         {
-            this.item = item;
+            this.itemObject = itemObject;
             this.amount = amount;
         }
         public void AddAmount(int amount)

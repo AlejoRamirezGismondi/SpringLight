@@ -17,7 +17,7 @@ namespace Crops
             spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         }
 
-        public override void Interact()
+        public override void Interact(InteractPoint interactPoint)
         {
             State = State.NextState(this);
         }

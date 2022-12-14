@@ -3,7 +3,7 @@
 namespace Items.Scripts
 {
     [CreateAssetMenu(fileName = "New Tool", menuName = "Inventory/Tool")]
-    public class Tool : Item
+    public class ToolObject : ItemObject
     {
         public void Awake()
         {

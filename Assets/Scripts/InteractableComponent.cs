@@ -9,8 +9,8 @@ public class InteractableComponent : MonoBehaviour
         _interactable = GetComponent(typeof(Interactable)) as Interactable;
     }
 
-    public void Interact()
+    public void Interact(InteractPoint interactPoint)
     {
-        if (_interactable != null) _interactable.Interact();
+        if (_interactable != null) _interactable.Interact(interactPoint);
     }
 }

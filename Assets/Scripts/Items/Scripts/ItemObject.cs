@@ -4,10 +4,11 @@ namespace Items.Scripts
 {
     public enum ItemType
     {
-        Tool
+        Tool,
+        Seed
     }
     
-    public abstract class Item : ScriptableObject
+    public abstract class ItemObject : ScriptableObject
     {
         public GameObject prefab;
         public ItemType type;
