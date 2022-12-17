@@ -1,7 +1,6 @@
 using Inventory.Scripts;
 using Items;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class InteractPoint : MonoBehaviour
 {
@@ -26,5 +25,10 @@ public class InteractPoint : MonoBehaviour
     private void OnTriggerExit2D(Collider2D col)
     {
         _interactingCollider = null;
+    }
+
+    private void OnApplicationQuit()
+    {
+        inventory.container.Clear();
     }
 }

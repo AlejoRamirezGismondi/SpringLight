@@ -10,7 +10,7 @@ namespace Items.Scripts
     
     public abstract class ItemObject : ScriptableObject
     {
-        public GameObject prefab;
+        public GameObject inventoryDisplayPrefab;
         public ItemType type;
     }
 }

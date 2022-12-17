@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 444ad7f9fbfe442b9e4a57befb685874, type: 3}
   m_Name: Wheat Seed
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  inventoryDisplayPrefab: {fileID: 4621269051262409230, guid: 73e4f5910e45c604fb0a110625ff52c1, type: 3}
   type: 1

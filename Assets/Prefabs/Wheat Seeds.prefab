@@ -8,33 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8296803635928040006}
+  - component: {fileID: 8786618256745581952}
   - component: {fileID: 1646546318163280610}
   - component: {fileID: 9119506671785734243}
   - component: {fileID: 7530210958640620876}
   - component: {fileID: 553604098813887885}
   m_Layer: 0
-  m_Name: Item
+  m_Name: Wheat Seeds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8296803635928040006
-Transform:
+--- !u!224 &8786618256745581952
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8296803635928040005}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -2, y: 0}
+  m_SizeDelta: {x: 1, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1646546318163280610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,7 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9203ef97c48040f4090ff0a05038c59a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 0}
+  item: {fileID: 11400000, guid: f697e0b185564dc49953ffc542ff7609, type: 2}
 --- !u!61 &7530210958640620876
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -124,8 +129,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1015817369
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -1771138165, guid: be1fe8de3b39bc84da83835b0a9dcc93, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
