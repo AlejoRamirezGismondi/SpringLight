@@ -15,7 +15,7 @@ namespace Inventory.Scripts
         }
         private void Update()
         {
-            //UpdateDisplay();
+            UpdateDisplay();
         }
         private void CreateDisplay()
         {
@@ -32,14 +32,16 @@ namespace Inventory.Scripts
         {
             for (int i = 0; i < inventory.container.Count; i++)
             {
+                if (i >= 9) break;
                 if (_itemsDisplayed.ContainsKey(inventory.container[i]))
                 {
-                    _itemsDisplayed[inventory.container[i]].GetComponent<RectTransform>().localPosition = GetPosition(i);
+                    _itemsDisplayed[inventory.container[i]].GetComponentInChildren<TextMeshProUGUI>().text = inventory.container[i].amount.ToString("n0");
                 }
                 else
                 {
                     var obj = Instantiate(inventory.container[i].itemObject.inventoryDisplayPrefab, Vector3.zero, Quaternion.identity, transform);
                     obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
+                    obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.container[i].amount.ToString("n0");
                     _itemsDisplayed.Add(inventory.container[i], obj);
                 }
             }
