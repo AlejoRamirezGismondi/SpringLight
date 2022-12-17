@@ -1,3 +1,4 @@
+using Inventory.Scripts;
 using Items.Scripts;
 
 namespace Items
@@ -10,9 +11,9 @@ namespace Items
     public class Item : Interactable
     {
         public ItemObject item;
-        public override void Interact(InteractPoint interactPoint)
+        public override void Interact(InventoryComponent inventoryComponent)
         {
-            interactPoint.AddItem(this);
+            inventoryComponent.AddItem(this);
             Destroy(gameObject);
         }
     }

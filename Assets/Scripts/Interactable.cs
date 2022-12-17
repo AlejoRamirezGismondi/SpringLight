@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Inventory.Scripts;
+using UnityEngine;
 
 public abstract class Interactable : MonoBehaviour
 {
-    public abstract void Interact(InteractPoint interactPoint);
+    public abstract void Interact(InventoryComponent inventoryComponent);
 }

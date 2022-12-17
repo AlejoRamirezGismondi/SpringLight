@@ -1,3 +1,4 @@
+using Inventory.Scripts;
 using UnityEngine;
 
 public class InteractableComponent : MonoBehaviour
@@ -9,8 +10,8 @@ public class InteractableComponent : MonoBehaviour
         _interactable = GetComponent(typeof(Interactable)) as Interactable;
     }
 
-    public void Interact(InteractPoint interactPoint)
+    public void Interact(InventoryComponent inventoryComponent)
     {
-        if (_interactable != null) _interactable.Interact(interactPoint);
+        if (_interactable != null) _interactable.Interact(inventoryComponent);
     }
 }

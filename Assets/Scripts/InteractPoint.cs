@@ -1,22 +1,16 @@
 using Inventory.Scripts;
-using Items;
 using UnityEngine;
 
 public class InteractPoint : MonoBehaviour
 {
-    [SerializeField] private InventoryObject inventory;
+    [SerializeField] private InventoryComponent inventory;
     private InteractableComponent _interactingCollider;
 
     public void Interact()
     {
-        if (_interactingCollider != null) _interactingCollider.Interact(this);
+        if (_interactingCollider != null) _interactingCollider.Interact(inventory);
     }
 
-    public void AddItem(Item item)
-    {
-        inventory.AddItem(item.item, 1);
-    }
-    
     private void OnTriggerEnter2D(Collider2D col)
     {
         _interactingCollider = col.GetComponent<InteractableComponent>();
@@ -29,6 +23,6 @@ public class InteractPoint : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        inventory.container.Clear();
+        //inventory.container.Clear();
     }
 }

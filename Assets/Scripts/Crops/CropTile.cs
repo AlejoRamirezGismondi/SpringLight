@@ -1,4 +1,5 @@
 ﻿using Crops.CropState;
+using Inventory.Scripts;
 using UnityEngine;
 
 namespace Crops
@@ -17,7 +18,7 @@ namespace Crops
             spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         }
 
-        public override void Interact(InteractPoint interactPoint)
+        public override void Interact(InventoryComponent inventoryComponent)
         {
             State = State.NextState(this);
         }
