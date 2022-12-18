@@ -1,4 +1,5 @@
 using System.Collections;
+using Inventory.Scripts;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -14,6 +15,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator anim;
     [SerializeField] private GameObject interactPoint;
     private InteractPoint _interactTarget;
+    private InventoryComponent _inventory;
     private static readonly int MoveX = Animator.StringToHash("moveX");
     private static readonly int MoveY = Animator.StringToHash("moveY");
     private static readonly int isMoving = Animator.StringToHash("isMoving");
@@ -24,12 +26,14 @@ public class PlayerController : MonoBehaviour
         _input = Vector2.zero;
         interactPoint = GameObject.FindGameObjectsWithTag("InteractPoint")[0];
         _interactTarget = interactPoint.GetComponent<InteractPoint>();
+        _inventory = GetComponentInChildren<InventoryComponent>();
     }
 
     private void Update()
     {
         if (_isMoving) return;
         if (Input.GetKeyDown(KeyCode.E)) _interactTarget.Interact();
+        CheckForScrollWheel();
         _input.x = Input.GetAxisRaw("Horizontal");
         _input.y = Input.GetAxisRaw("Vertical");
 
@@ -86,5 +90,18 @@ public class PlayerController : MonoBehaviour
     {
         anim.SetFloat(MoveX, _input.normalized.x);
         anim.SetFloat(MoveY, _input.normalized.y);
+    }
+    
+    // This method checks for scrolling wheel input and calls the InventoryComponent's method to change the selected item
+    private void CheckForScrollWheel()
+    {
+        if (Input.mouseScrollDelta.y > 0)
+        {
+            _inventory.NextSelectedItem();
+        }
+        else if (Input.mouseScrollDelta.y < 0)
+        {
+            _inventory.PreviousSelectedItem();
+        }
     }
 }

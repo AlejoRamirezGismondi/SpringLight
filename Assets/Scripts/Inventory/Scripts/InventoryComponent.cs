@@ -11,5 +11,15 @@ namespace Inventory.Scripts
         {
             inventory.AddItem(item.item, 1);
         }
+
+        public void NextSelectedItem()
+        {
+            inventory.NextSelectedItem();
+        }
+
+        public void PreviousSelectedItem()
+        {
+            inventory.PreviousSelectedItem();
+        }
     }
 }

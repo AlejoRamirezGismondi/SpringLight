@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using Items.Scripts;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Inventory.Scripts
 {
     [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory")]
     public class InventoryObject : ScriptableObject
     {
-        public List<InventorySlot> container = new List<InventorySlot>();
+        public List<InventorySlot> container = new();
+        public int selectedSlot = 0;
         
         public void AddItem(ItemObject itemObject, int amount)
         {
@@ -27,6 +27,18 @@ namespace Inventory.Scripts
             {
                 container.Add(new InventorySlot(itemObject, amount));
             }
+        }
+
+        public void NextSelectedItem()
+        {
+            if (selectedSlot < container.Count - 1) selectedSlot++;
+            else selectedSlot = 0;
+        }
+
+        public void PreviousSelectedItem()
+        {
+            if (selectedSlot > 0) selectedSlot--;
+            else selectedSlot = container.Count - 1;
         }
     }
     
