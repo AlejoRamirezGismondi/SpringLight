@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1037a52fece64e8a893c536afdeea4ca, type: 3}
-  m_Name: Hoe
+  m_Script: {fileID: 11500000, guid: bea5ea8bc8e94273ae9fddf2eb30f7b5, type: 3}
+  m_Name: Plowed
   m_EditorClassIdentifier: 
-  inventoryDisplayPrefab: {fileID: 8671893803553535064, guid: 6e80453e930918a4bb9d5890b7e8f201, type: 3}
-  type: 1
+  nextState: {fileID: 11400000, guid: 4f3da66dd5bc3bb478fed45447396101, type: 2}
+  sprite: {fileID: -1956486787, guid: fa0fca3afe863ea45acddddf4aa3b835, type: 3}

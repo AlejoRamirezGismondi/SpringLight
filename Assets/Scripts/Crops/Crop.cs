@@ -2,7 +2,7 @@
 
 namespace Crops
 {
-    public class Crop
+    public class Crop : ScriptableObject
     {
         public Sprite SeedSprite;
         public Sprite GrowingSprite;

@@ -8,9 +8,14 @@ namespace Inventory.Scripts
     [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory")]
     public class InventoryObject : ScriptableObject
     {
-        public List<InventorySlot> container = new();
-        public int selectedSlot = 0;
+        public List<InventorySlot> container = new(36);
+        public int selectedSlot;
         
+        public void Awake()
+        {
+            for (int i = 0; i < container.Count; i++) container.Add(new InventorySlot(EmptyObject.emptyObject, 1));
+        }
+
         public void AddItem(ItemObject itemObject, int amount)
         {
             bool hasItem = false;
@@ -39,6 +44,17 @@ namespace Inventory.Scripts
         {
             if (selectedSlot > 0) selectedSlot--;
             else selectedSlot = container.Count - 1;
+        }
+        
+        public InventorySlot GetSelectedSlot()
+        {
+            return container[selectedSlot];
+        }
+
+        public void RemoveSelectedItem(int amount)
+        {
+            container[selectedSlot].amount -= amount;
+            if (container[selectedSlot].amount <= 0) container[selectedSlot] = new InventorySlot(EmptyObject.emptyObject, 1);
         }
     }
     

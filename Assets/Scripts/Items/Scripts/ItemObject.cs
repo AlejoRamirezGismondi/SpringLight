@@ -4,6 +4,7 @@ namespace Items.Scripts
 {
     public enum ItemType
     {
+        Empty,
         Tool,
         Seed
     }

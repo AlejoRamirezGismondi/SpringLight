@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3006770432379019237, guid: f59f224536704704abfdabc27014f5b3, type: 3}
       propertyPath: m_Name
-      value: Inventory Display Slot Variant
+      value: Wheat Seed
       objectReference: {fileID: 0}
     - target: {fileID: 3436081686863520066, guid: f59f224536704704abfdabc27014f5b3, type: 3}
       propertyPath: m_AnchoredPosition.x

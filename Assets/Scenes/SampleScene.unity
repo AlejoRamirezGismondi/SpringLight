@@ -6215,6 +6215,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -1930818403, guid: fa0fca3afe863ea45acddddf4aa3b835, type: 3}
     - target: {fileID: 764950077611901165, guid: 0e9159314d0ceaa43b243f7049f825a6, type: 3}
+      propertyPath: initialState
+      value: 
+      objectReference: {fileID: 11400000, guid: 4f3da66dd5bc3bb478fed45447396101, type: 2}
+    - target: {fileID: 764950077611901165, guid: 0e9159314d0ceaa43b243f7049f825a6, type: 3}
       propertyPath: spriteRenderer
       value: 
       objectReference: {fileID: 286068285}

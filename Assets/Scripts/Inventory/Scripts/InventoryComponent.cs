@@ -21,5 +21,15 @@ namespace Inventory.Scripts
         {
             inventory.PreviousSelectedItem();
         }
+
+        public InventorySlot GetSelectedSlot()
+        {
+            return inventory.GetSelectedSlot();
+        }
+
+        public void RemoveSelectedItem(int amount)
+        {
+            inventory.RemoveSelectedItem(amount);
+        }
     }
 }

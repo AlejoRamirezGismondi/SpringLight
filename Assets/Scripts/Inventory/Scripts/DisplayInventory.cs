@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Items.Scripts;
 using TMPro;
 using UnityEngine;
 
@@ -24,7 +25,8 @@ namespace Inventory.Scripts
                 if (i >= 9) break;
                 var obj = Instantiate(inventory.container[i].itemObject.inventoryDisplayPrefab, Vector3.zero, Quaternion.identity, transform);
                 obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
-                obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.container[i].amount.ToString("n0");
+                if (inventory.container[i].itemObject.type != ItemType.Tool)
+                    obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.container[i].amount.ToString("n0");
                 _itemsDisplayed.Add(inventory.container[i], obj);
             }
         }
@@ -35,13 +37,15 @@ namespace Inventory.Scripts
                 if (i >= 9) break;
                 if (_itemsDisplayed.ContainsKey(inventory.container[i]))
                 {
-                    _itemsDisplayed[inventory.container[i]].GetComponentInChildren<TextMeshProUGUI>().text = inventory.container[i].amount.ToString("n0");
+                    if (inventory.container[i].itemObject.type != ItemType.Tool)
+                        _itemsDisplayed[inventory.container[i]].GetComponentInChildren<TextMeshProUGUI>().text = inventory.container[i].amount.ToString("n0");
                 }
                 else
                 {
                     var obj = Instantiate(inventory.container[i].itemObject.inventoryDisplayPrefab, Vector3.zero, Quaternion.identity, transform);
                     obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
-                    obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.container[i].amount.ToString("n0");
+                    if (inventory.container[i].itemObject.type != ItemType.Tool)
+                        obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.container[i].amount.ToString("n0");
                     _itemsDisplayed.Add(inventory.container[i], obj);
                 }
             }
