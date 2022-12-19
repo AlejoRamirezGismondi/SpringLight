@@ -23,6 +23,7 @@ namespace Inventory.Scripts
             for (int i = 0; i < inventory.container.Count; i++)
             {
                 if (i >= 9) break;
+                if (inventory.container[i].itemObject.type == ItemType.Empty) continue;
                 var obj = Instantiate(inventory.container[i].itemObject.inventoryDisplayPrefab, Vector3.zero, Quaternion.identity, transform);
                 obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
                 if (inventory.container[i].itemObject.type != ItemType.Tool)
@@ -35,6 +36,7 @@ namespace Inventory.Scripts
             for (int i = 0; i < inventory.container.Count; i++)
             {
                 if (i >= 9) break;
+                if (inventory.container[i].itemObject.type == ItemType.Empty) continue;
                 if (_itemsDisplayed.ContainsKey(inventory.container[i]))
                 {
                     if (inventory.container[i].itemObject.type != ItemType.Tool)

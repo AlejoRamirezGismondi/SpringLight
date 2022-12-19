@@ -9,12 +9,7 @@ namespace Crops.Scripts
         public abstract void Interact(CropTile cropTile, InventoryComponent inventoryComponent);
         public abstract void Initialize(CropTile cropTile);
     }
-
-    // public class SeededState : CropState
-    // {
-    //     
-    // }
-    //
+    
     // public class GrowingState : CropState
     // {
     //     

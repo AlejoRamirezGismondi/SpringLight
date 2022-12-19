@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bea5ea8bc8e94273ae9fddf2eb30f7b5, type: 3}
-  m_Name: Plowed
+  m_Script: {fileID: 11500000, guid: 30eb0dbdd53940b688141a548203a61b, type: 3}
+  m_Name: Seeded
   m_EditorClassIdentifier: 
-  nextState: {fileID: 11400000, guid: 8959f2b607b614948a3a8b42c3182479, type: 2}
-  sprite: {fileID: -1956486787, guid: fa0fca3afe863ea45acddddf4aa3b835, type: 3}
+  nextState: {fileID: 11400000, guid: 4f3da66dd5bc3bb478fed45447396101, type: 2}

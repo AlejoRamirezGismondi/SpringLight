@@ -11,6 +11,9 @@ namespace Crops.Scripts
         public override void Interact(CropTile cropTile, InventoryComponent inventoryComponent)
         {
             if (inventoryComponent.GetSelectedSlot().itemObject.type != ItemType.Seed) return;
+            // Maybe there is a better way to do this
+            SeededState s = (SeededState)nextState;
+            s.SetSeedObject((SeedObject)inventoryComponent.GetSelectedSlot().itemObject);
             cropTile.SetState(nextState);
             inventoryComponent.RemoveSelectedItem(1);
         }

@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Wheat Seed
   m_EditorClassIdentifier: 
   inventoryDisplayPrefab: {fileID: 4621269051262409230, guid: 73e4f5910e45c604fb0a110625ff52c1, type: 3}
-  type: 1
+  type: 2
+  cropObject: {fileID: 11400000, guid: 4294c07d6289d424da255a3265ddb3cc, type: 2}
