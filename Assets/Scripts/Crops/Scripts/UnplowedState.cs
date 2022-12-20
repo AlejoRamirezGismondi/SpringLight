@@ -18,5 +18,10 @@ namespace Crops.Scripts
         {
             cropTile.SetSprite(sprite);
         }
+
+        public override void OnNextDay()
+        {
+            // Do nothing
+        }
     }
 }

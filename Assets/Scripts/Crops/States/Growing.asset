@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30eb0dbdd53940b688141a548203a61b, type: 3}
-  m_Name: Seeded
+  m_Script: {fileID: 11500000, guid: 84ddb313565048b491be9b30b08bd6f1, type: 3}
+  m_Name: Growing
   m_EditorClassIdentifier: 
-  nextState: {fileID: 11400000, guid: a764d07e1ad4c6b41b0fd7bcbf94d8c1, type: 2}
+  nextState: {fileID: 11400000, guid: 4f3da66dd5bc3bb478fed45447396101, type: 2}
+  cropObject: {fileID: 0}

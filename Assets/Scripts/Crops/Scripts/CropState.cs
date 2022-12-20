@@ -8,13 +8,9 @@ namespace Crops.Scripts
         public CropState nextState;
         public abstract void Interact(CropTile cropTile, InventoryComponent inventoryComponent);
         public abstract void Initialize(CropTile cropTile);
+        public abstract void OnNextDay();
     }
     
-    // public class GrowingState : CropState
-    // {
-    //     
-    // }
-    //
     // public class GrownState : CropState
     // {
     //     
