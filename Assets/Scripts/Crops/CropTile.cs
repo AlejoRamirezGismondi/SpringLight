@@ -29,13 +29,18 @@ namespace Crops
         
         public void SetCropSprite(Sprite sprite)
         {
-            if (sprite != null) cropSpriteRenderer.sprite = sprite;
+            cropSpriteRenderer.sprite = sprite;
         }
 
         public void SetState(CropState newState)
         {
             State = newState;
             State.Initialize(this);
+        }
+
+        public void NextDay()
+        {
+            State.OnNextDay();
         }
     }
 }

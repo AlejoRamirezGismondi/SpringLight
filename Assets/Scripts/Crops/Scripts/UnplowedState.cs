@@ -17,6 +17,7 @@ namespace Crops.Scripts
         public override void Initialize(CropTile cropTile)
         {
             cropTile.SetSprite(sprite);
+            cropTile.SetCropSprite(null);
         }
 
         public override void OnNextDay()
