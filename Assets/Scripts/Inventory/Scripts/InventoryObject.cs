@@ -13,7 +13,7 @@ namespace Inventory.Scripts
         
         public void Awake()
         {
-            for (int i = 0; i < container.Count; i++) container.Add(new InventorySlot(EmptyObject.emptyObject, 1));
+            for (int i = 0; i < 36; i++) container.Add(new InventorySlot(EmptyObject.emptyObject, 1));
         }
 
         public void AddItem(ItemObject itemObject, int amount)
