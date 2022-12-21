@@ -6,7 +6,8 @@ namespace Items.Scripts
     {
         Empty,
         Tool,
-        Seed
+        Seed,
+        Produce
     }
     
     public abstract class ItemObject : ScriptableObject

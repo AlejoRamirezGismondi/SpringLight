@@ -25,7 +25,8 @@ namespace Crops.Scripts
         {
             if (_elapsedDays >= cropObject.daysToGrow)
             {
-                // TODO Add the crop to the grown state
+                GrownState g = (GrownState)nextState;
+                g.cropObject = cropObject;
                 _cropTile.SetState(nextState);
             }
             // TODO check for water

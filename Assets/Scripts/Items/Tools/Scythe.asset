@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84ddb313565048b491be9b30b08bd6f1, type: 3}
-  m_Name: Growing
+  m_Script: {fileID: 11500000, guid: 1037a52fece64e8a893c536afdeea4ca, type: 3}
+  m_Name: Scythe
   m_EditorClassIdentifier: 
-  nextState: {fileID: 11400000, guid: 88a5fc45294d91d42b2efa60ceb1e7d4, type: 2}
-  cropObject: {fileID: 0}
+  inventoryDisplayPrefab: {fileID: 653356877997474692, guid: 4b56f32da917a314e95290d3e3252855, type: 3}
+  type: 1

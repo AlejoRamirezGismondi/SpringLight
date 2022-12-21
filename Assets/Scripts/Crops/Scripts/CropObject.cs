@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Items.Scripts;
+using UnityEngine;
 
 namespace Crops.Scripts
 {
@@ -9,5 +10,6 @@ namespace Crops.Scripts
         public Sprite growingSprite;
         public Sprite grownSprite;
         public int daysToGrow;
+        public ProduceObject produce;
     }
 }
