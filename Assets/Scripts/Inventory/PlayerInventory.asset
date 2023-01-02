@@ -19,6 +19,8 @@ MonoBehaviour:
     amount: 10
   - itemObject: {fileID: 11400000, guid: e4267d16685475a419fe9a5533de313b, type: 2}
     amount: 1
+  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
+    amount: 1
   - itemObject: {fileID: 11400000, guid: 1b1700b65ff051a4f828340531e74013, type: 2}
     amount: 65
   - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
@@ -89,6 +91,4 @@ MonoBehaviour:
     amount: 1
   - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
     amount: 1
-  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
-    amount: 1
-  selectedSlot: 2
+  selectedSlot: 1

@@ -10,6 +10,7 @@ namespace Items.Scripts
         public void Awake()
         {
             type = ItemType.Empty;
+            uniqueItem = true;
         }
 
         // This is a singleton instance of the scriptable object EmptyObject that is used to represent an empty slot in the inventory

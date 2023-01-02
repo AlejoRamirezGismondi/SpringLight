@@ -8,6 +8,7 @@ namespace Items.Scripts
         public void Awake()
         {
             type = ItemType.Tool;
+            uniqueItem = true;
         }
     }
 }

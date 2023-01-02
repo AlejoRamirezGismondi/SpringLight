@@ -12,6 +12,7 @@ namespace Items.Scripts
         public void Awake()
         {
             type = ItemType.Seed;
+            uniqueItem = false;
         }
     }
 }

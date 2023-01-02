@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Items.Scripts;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Inventory.Scripts
@@ -8,7 +9,7 @@ namespace Inventory.Scripts
     public class DisplayInventory : MonoBehaviour
     {
         public InventoryObject inventory;
-        [SerializeField] private int NUMBER_OF_COLUMNS;
+        public static int NUMBER_OF_COLUMNS = 9;
         private readonly Dictionary<InventorySlot, GameObject> _itemsDisplayed = new();
         private void Start()
         {
@@ -22,21 +23,21 @@ namespace Inventory.Scripts
         {
             for (int i = 0; i < inventory.container.Count; i++)
             {
-                if (i >= 9) break;
-                if (inventory.container[i].itemObject.type == ItemType.Empty) continue;
+                if (i >= NUMBER_OF_COLUMNS) break;
                 var obj = Instantiate(inventory.container[i].itemObject.inventoryDisplayPrefab, Vector3.zero, Quaternion.identity, transform);
                 obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
-                if (inventory.container[i].itemObject.type != ItemType.Tool)
+                if (!inventory.container[i].itemObject.uniqueItem)
                     obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.container[i].amount.ToString("n0");
                 _itemsDisplayed.Add(inventory.container[i], obj);
+                if (i == inventory.selectedSlot) obj.transform.GetChild(1).GameObject().SetActive(true);
             }
         }
         private void UpdateDisplay()
         {
             for (int i = 0; i < inventory.container.Count; i++)
             {
-                if (i >= 9) break;
-                if (inventory.container[i].itemObject.type == ItemType.Empty) continue;
+                if (i >= NUMBER_OF_COLUMNS) break;
+                _itemsDisplayed[inventory.container[i]].transform.GetChild(1).GameObject().SetActive(i == inventory.selectedSlot);
                 if (_itemsDisplayed.ContainsKey(inventory.container[i]))
                 {
                     if (inventory.container[i].itemObject.type != ItemType.Tool)
@@ -46,7 +47,7 @@ namespace Inventory.Scripts
                 {
                     var obj = Instantiate(inventory.container[i].itemObject.inventoryDisplayPrefab, Vector3.zero, Quaternion.identity, transform);
                     obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
-                    if (inventory.container[i].itemObject.type != ItemType.Tool)
+                    if (!inventory.container[i].itemObject.uniqueItem)
                         obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.container[i].amount.ToString("n0");
                     _itemsDisplayed.Add(inventory.container[i], obj);
                 }

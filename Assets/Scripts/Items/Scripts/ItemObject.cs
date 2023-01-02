@@ -14,5 +14,6 @@ namespace Items.Scripts
     {
         public GameObject inventoryDisplayPrefab;
         public ItemType type;
+        public bool uniqueItem;
     }
 }
