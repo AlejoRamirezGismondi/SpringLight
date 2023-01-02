@@ -9,12 +9,12 @@ namespace Crops.Scripts
     {
         private CropTile _cropTile;
         private SeedObject _seedObject;
-        
+
         public void SetSeedObject(SeedObject seedObject)
         {
             _seedObject = seedObject;
         }
-        
+
         public override void Interact(CropTile cropTile, InventoryComponent inventoryComponent)
         {
             // Do nothing
@@ -28,6 +28,7 @@ namespace Crops.Scripts
 
         public override void OnNextDay()
         {
+            if (!_cropTile.IsWatered()) return;
             GrowingState g = (GrowingState)nextState;
             g.cropObject = _seedObject.cropObject;
             _cropTile.SetState(nextState);

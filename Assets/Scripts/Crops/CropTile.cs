@@ -1,5 +1,6 @@
 ﻿using Crops.Scripts;
 using Inventory.Scripts;
+using Items.Scripts;
 using UnityEngine;
 
 namespace Crops
@@ -10,6 +11,7 @@ namespace Crops
         [SerializeField] private CropState initialState;
         [SerializeField] private SpriteRenderer cropSpriteRenderer;
         private SpriteRenderer _spriteRenderer;
+        private bool _watered;
 
         public void Start()
         {
@@ -19,6 +21,19 @@ namespace Crops
 
         public override void Interact(InventoryComponent inventoryComponent)
         {
+            if (inventoryComponent.GetSelectedSlot().itemObject.type == ItemType.Tool)
+            {
+                ToolObject t = (ToolObject)inventoryComponent.GetSelectedSlot().itemObject;
+                if (t.toolType == ToolType.WaterCan)
+                {
+                    WaterCanToolObject w = (WaterCanToolObject)t;
+                    if (w.HasWater())
+                    {
+                        Water();
+                        w.UseWater();
+                    }
+                }
+            }
             State.Interact(this, inventoryComponent);
         }
 
@@ -26,7 +41,7 @@ namespace Crops
         {
             if (sprite != null) _spriteRenderer.sprite = sprite;
         }
-        
+
         public void SetCropSprite(Sprite sprite)
         {
             cropSpriteRenderer.sprite = sprite;
@@ -41,6 +56,21 @@ namespace Crops
         public void NextDay()
         {
             State.OnNextDay();
+            _watered = false;
+            // Remove the shade applied to the _spriteRenderer in the Water() method
+            _spriteRenderer.color = Color.white;
+        }
+
+        private void Water()
+        {
+            _watered = true;
+            // Apply a shade to the _spriteRenderer to indicate that the crop has been watered
+            _spriteRenderer.color = new Color(0.4f, 0.4f, 0.4f, 1f);
+        }
+
+        public bool IsWatered()
+        {
+            return _watered;
         }
     }
 }

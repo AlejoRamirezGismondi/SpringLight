@@ -16,13 +16,81 @@ MonoBehaviour:
   - itemObject: {fileID: 11400000, guid: 026ad7946ea0e58429ceea8af1439ac0, type: 2}
     amount: 1
   - itemObject: {fileID: 11400000, guid: f697e0b185564dc49953ffc542ff7609, type: 2}
-    amount: 10
+    amount: 11
   - itemObject: {fileID: 11400000, guid: e4267d16685475a419fe9a5533de313b, type: 2}
     amount: 1
   - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
     amount: 1
   - itemObject: {fileID: 11400000, guid: 1b1700b65ff051a4f828340531e74013, type: 2}
     amount: 65
+  - itemObject: {fileID: 11400000, guid: e1b8062ab963e02469c523ed08f1dbf6, type: 2}
+    amount: 1
+  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
+    amount: 1
+  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
+    amount: 1
+  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
+    amount: 1
+  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
+    amount: 1
+  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
+    amount: 1
+  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
+    amount: 1
+  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
+    amount: 1
+  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
+    amount: 1
+  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
+    amount: 1
+  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
+    amount: 1
+  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
+    amount: 1
+  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
+    amount: 1
+  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
+    amount: 1
+  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
+    amount: 1
+  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
+    amount: 1
+  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
+    amount: 1
+  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
+    amount: 1
+  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
+    amount: 1
+  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
+    amount: 1
+  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
+    amount: 1
+  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
+    amount: 1
+  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
+    amount: 1
+  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
+    amount: 1
+  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
+    amount: 1
+  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
+    amount: 1
+  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
+    amount: 1
+  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
+    amount: 1
+  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
+    amount: 1
+  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
+    amount: 1
+  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
+    amount: 1
+  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
+    amount: 1
+  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
+    amount: 1
+  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
+    amount: 1
   - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
     amount: 1
   - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
@@ -91,4 +159,8 @@ MonoBehaviour:
     amount: 1
   - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
     amount: 1
-  selectedSlot: 1
+  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
+    amount: 1
+  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
+    amount: 1
+  selectedSlot: 5

@@ -23,13 +23,13 @@ namespace Crops.Scripts
 
         public override void OnNextDay()
         {
+            if (!_cropTile.IsWatered()) return;
             if (_elapsedDays >= cropObject.daysToGrow)
             {
                 GrownState g = (GrownState)nextState;
                 g.cropObject = cropObject;
                 _cropTile.SetState(nextState);
             }
-            // TODO check for water
             else _elapsedDays++;
         }
     }

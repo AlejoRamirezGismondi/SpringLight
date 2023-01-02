@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1037a52fece64e8a893c536afdeea4ca, type: 3}
-  m_Name: Scythe
+  m_Script: {fileID: 11500000, guid: 3b0e457eb9ba426ebe08b683b798b703, type: 3}
+  m_Name: WaterCanTool
   m_EditorClassIdentifier: 
-  inventoryDisplayPrefab: {fileID: 653356877997474692, guid: 4b56f32da917a314e95290d3e3252855, type: 3}
+  inventoryDisplayPrefab: {fileID: 9094641803620881790, guid: 7e6a8a65d73a22e4fa698b6203753e67, type: 3}
   type: 1
   uniqueItem: 1
-  toolType: 1
+  toolType: 2
+  waterAmount: 5

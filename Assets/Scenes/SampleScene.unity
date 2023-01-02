@@ -7410,7 +7410,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 11400000, guid: c76b9697d832e1e4aae23b3c64459d15, type: 2}
-  NUMBER_OF_COLUMNS: 9
 --- !u!114 &2033159801
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -11,7 +11,9 @@ namespace Crops.Scripts
 
         public override void Interact(CropTile cropTile, InventoryComponent inventoryComponent)
         {
-            if (inventoryComponent.GetSelectedSlot().itemObject.type == ItemType.Tool && inventoryComponent.GetSelectedSlot().itemObject.name == "Hoe") cropTile.SetState(nextState);
+            if (inventoryComponent.GetSelectedSlot().itemObject.type != ItemType.Tool) return;
+            ToolObject t = (ToolObject)inventoryComponent.GetSelectedSlot().itemObject;
+            if (t.toolType == ToolType.Hoe) cropTile.SetState(nextState);
         }
         
         public override void Initialize(CropTile cropTile)
