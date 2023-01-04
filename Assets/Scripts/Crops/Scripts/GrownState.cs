@@ -12,10 +12,7 @@ namespace Crops.Scripts
         
         public override void Interact(CropTile cropTile, InventoryComponent inventoryComponent)
         {
-            var tool = inventoryComponent.GetSelectedSlot().itemObject;
-            if (tool.type != ItemType.Tool) return;
-            ToolObject t = (ToolObject)tool;
-            if (t.toolType != ToolType.Scythe) return;
+            if (inventoryComponent.GetSelectedSlot().itemObject is not ToolObject { toolType: ToolType.Scythe }) return;
             inventoryComponent.AddItem(cropObject.produce, amountOfProduce);
             cropTile.SetState(nextState);
         }

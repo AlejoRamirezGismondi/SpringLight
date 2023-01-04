@@ -12,14 +12,16 @@ namespace Items.Scripts
             toolType = ToolType.WaterCan;
         }
 
-        public void AddWater()
+        public void AddWater(int amount)
         {
-            waterAmount += 1;
+            waterAmount += amount;
+            if (waterAmount >= 5) waterAmount = 5;
         }
         
         public void UseWater()
         {
             if (waterAmount > 0) waterAmount -= 1;
+            if (waterAmount < 0) waterAmount = 0;
         }
         
         public bool HasWater()
