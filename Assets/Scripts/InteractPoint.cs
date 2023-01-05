@@ -1,24 +1,25 @@
 using Inventory.Scripts;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class InteractPoint : MonoBehaviour
 {
     [SerializeField] private InventoryComponent inventory;
-    private InteractableComponent _interactingCollider;
+    [FormerlySerializedAs("_interactingCollider")] [SerializeField] private InteractableComponent interactingCollider;
 
     public void Interact()
     {
-        if (_interactingCollider != null) _interactingCollider.Interact(inventory);
+        if (interactingCollider != null) interactingCollider.Interact(inventory);
     }
-
-    private void OnTriggerEnter2D(Collider2D col)
-    {
-        _interactingCollider = col.GetComponent<InteractableComponent>();
-    }
-
+    
     private void OnTriggerExit2D(Collider2D col)
     {
-        _interactingCollider = null;
+        interactingCollider = null;
+    }
+
+    private void OnTriggerStay2D(Collider2D col)
+    {
+        interactingCollider = col.GetComponent<InteractableComponent>();
     }
 
     private void OnApplicationQuit()
