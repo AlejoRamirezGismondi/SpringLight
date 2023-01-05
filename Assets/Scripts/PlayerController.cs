@@ -31,9 +31,9 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (_isMoving) return;
         if (Input.GetKeyDown(KeyCode.E)) _interactTarget.Interact();
         CheckForScrollWheel();
+        if (_isMoving) return;
         _input.x = Input.GetAxisRaw("Horizontal");
         _input.y = Input.GetAxisRaw("Vertical");
 
@@ -95,11 +95,11 @@ public class PlayerController : MonoBehaviour
     // This method checks for scrolling wheel input and calls the InventoryComponent's method to change the selected item
     private void CheckForScrollWheel()
     {
-        if (Input.mouseScrollDelta.y > 0)
+        if (Input.mouseScrollDelta.y < 0)
         {
             _inventory.NextSelectedItem();
         }
-        else if (Input.mouseScrollDelta.y < 0)
+        else if (Input.mouseScrollDelta.y > 0)
         {
             _inventory.PreviousSelectedItem();
         }
