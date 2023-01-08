@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14c828ea59a9408f8f4c728fb23fcf4a, type: 3}
+  m_Name: CropState (19)
+  m_EditorClassIdentifier: 
+  initialState: {fileID: 11400000, guid: 4f3da66dd5bc3bb478fed45447396101, type: 2}
+  watered: 0
+  state: {fileID: 11400000, guid: 4f3da66dd5bc3bb478fed45447396101, type: 2}
+  cropSprite: {fileID: 0}
+  sprite: {fileID: -1930818403, guid: fa0fca3afe863ea45acddddf4aa3b835, type: 3}

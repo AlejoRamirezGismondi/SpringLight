@@ -13,7 +13,9 @@ namespace Crops
         private SpriteRenderer _spriteRenderer;
         private bool _watered;
 
-        public void Start()
+        // Cannot use Start because the state must be loaded from the CropManager in case there is Loaded Data.
+        // Crop Manager has the responsibility of calling the Initialize method on every CropTile when the scene is loaded
+        public void Initialize()
         {
             _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
             State = initialState;
@@ -65,12 +67,40 @@ namespace Crops
         {
             _watered = true;
             // Apply a shade to the _spriteRenderer to indicate that the crop has been watered
-            _spriteRenderer.color = new Color(0.4f, 0.4f, 0.4f, 1f);
+            UpdateWateredColor();
         }
 
         public bool IsWatered()
         {
             return _watered;
+        }
+
+        private void UpdateWateredColor()
+        {
+            if (_watered) _spriteRenderer.color = new Color(0.4f, 0.4f, 0.4f, 1f);
+        }
+        
+        public CropTileObject GetCropTileObject()
+        {
+            CropTileObject cropTileObject = ScriptableObject.CreateInstance<CropTileObject>();
+            cropTileObject.initialState = initialState;
+            cropTileObject.state = State;
+            cropTileObject.watered = _watered;
+            cropTileObject.sprite = _spriteRenderer.sprite;
+            cropTileObject.cropSprite = cropSpriteRenderer.sprite;
+            return cropTileObject;
+        }
+
+        public void LoadFromCropTileObject(CropTileObject cropTileObject)
+        {
+            initialState = cropTileObject.initialState;
+            State = cropTileObject.state;
+            
+            _watered = cropTileObject.watered;
+            UpdateWateredColor();
+
+            _spriteRenderer.sprite = cropTileObject.sprite;
+            if (cropTileObject.cropSprite) cropSpriteRenderer.sprite = cropTileObject.cropSprite;
         }
     }
 }
