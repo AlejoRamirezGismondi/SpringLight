@@ -106,7 +106,23 @@ PrefabInstance:
     - target: {fileID: 3459692227019681393, guid: 73e4f5910e45c604fb0a110625ff52c1, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 1399462795, guid: 39910945923f25848a406e2e4249d921, type: 3}
+      objectReference: {fileID: 812078292, guid: dc0bb8a087189004e86031b31a65745a, type: 3}
+    - target: {fileID: 3459692227019681393, guid: 73e4f5910e45c604fb0a110625ff52c1, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3459692227019681393, guid: 73e4f5910e45c604fb0a110625ff52c1, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3459692227019681393, guid: 73e4f5910e45c604fb0a110625ff52c1, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3459692227019681393, guid: 73e4f5910e45c604fb0a110625ff52c1, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4621269051262409230, guid: 73e4f5910e45c604fb0a110625ff52c1, type: 3}
       propertyPath: m_Name
       value: Hoe
