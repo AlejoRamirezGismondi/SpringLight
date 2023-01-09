@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using UnityEngine;
 using static UnityEditor.AssetDatabase;
 
@@ -12,7 +13,7 @@ namespace Skin
     {
         public static void SaveSprite(SpriteDto deserializedGetData)
         {
-            CreateFolder("Assets/Artwork/Character/Resources", deserializedGetData.name);
+            Directory.CreateDirectory($"Assets/Artwork/Character/Resources/{deserializedGetData.name}");
 
             var n = 0;
             for (int i = 0; i < deserializedGetData.front.Length; i++)
