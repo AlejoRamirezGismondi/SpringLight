@@ -80,27 +80,27 @@ namespace Crops
             if (_watered) _spriteRenderer.color = new Color(0.4f, 0.4f, 0.4f, 1f);
         }
         
-        public CropTileObject GetCropTileObject()
-        {
-            CropTileObject cropTileObject = ScriptableObject.CreateInstance<CropTileObject>();
-            cropTileObject.initialState = initialState;
-            cropTileObject.state = State;
-            cropTileObject.watered = _watered;
-            cropTileObject.sprite = _spriteRenderer.sprite;
-            cropTileObject.cropSprite = cropSpriteRenderer.sprite;
-            return cropTileObject;
-        }
-
-        public void LoadFromCropTileObject(CropTileObject cropTileObject)
-        {
-            initialState = cropTileObject.initialState;
-            State = cropTileObject.state;
-            
-            _watered = cropTileObject.watered;
-            UpdateWateredColor();
-
-            _spriteRenderer.sprite = cropTileObject.sprite;
-            if (cropTileObject.cropSprite) cropSpriteRenderer.sprite = cropTileObject.cropSprite;
-        }
+        // public CropTileObject GetCropTileObject()
+        // {
+        //     CropTileObject cropTileObject = ScriptableObject.CreateInstance<CropTileObject>();
+        //     cropTileObject.initialState = initialState;
+        //     cropTileObject.state = State;
+        //     cropTileObject.watered = _watered;
+        //     cropTileObject.sprite = _spriteRenderer.sprite;
+        //     cropTileObject.cropSprite = cropSpriteRenderer.sprite;
+        //     return cropTileObject;
+        // }
+        //
+        // public void LoadFromCropTileObject(CropTileObject cropTileObject)
+        // {
+        //     initialState = cropTileObject.initialState;
+        //     State = cropTileObject.state;
+        //     
+        //     _watered = cropTileObject.watered;
+        //     UpdateWateredColor();
+        //
+        //     _spriteRenderer.sprite = cropTileObject.sprite;
+        //     if (cropTileObject.cropSprite) cropSpriteRenderer.sprite = cropTileObject.cropSprite;
+        // }
     }
 }
