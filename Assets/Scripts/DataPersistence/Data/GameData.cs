@@ -5,11 +5,11 @@ namespace DataPersistence.Data
     [Serializable]
     public class GameData
     {
-        public int placeHolder;
+        public int coins;
 
         public GameData()
         {
-            placeHolder = 0;
+            coins = 0;
         }
     }
 }

@@ -787,6 +787,7 @@ GameObject:
   - component: {fileID: 236781070}
   - component: {fileID: 236781071}
   - component: {fileID: 236781072}
+  - component: {fileID: 236781073}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -874,6 +875,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acdf099d47a516d4a8170f5c97eb4f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &236781073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236781066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea423500a0eb402293b8028ff508278c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fileName: data.game
 --- !u!1 &239914540
 GameObject:
   m_ObjectHideFlags: 0
@@ -21656,7 +21670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aaa2405488ded2459af84def990369f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coins: 1
+  coins: 20
   coinsText: {fileID: 2112152119}
 --- !u!1001 &1050945493438177375
 PrefabInstance:
@@ -21884,10 +21898,18 @@ PrefabInstance:
       propertyPath: m_BoundingShape2D
       value: 
       objectReference: {fileID: 810345799}
+    - target: {fileID: 8603925922979802980, guid: e218a84a305f90c4a8003f29e887e064, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.3409285
+      objectReference: {fileID: 0}
     - target: {fileID: 8603925922979802981, guid: e218a84a305f90c4a8003f29e887e064, type: 3}
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 239914542}
+    - target: {fileID: 8603925923350639927, guid: e218a84a305f90c4a8003f29e887e064, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.3409285
+      objectReference: {fileID: 0}
     - target: {fileID: 9053361545930460738, guid: e218a84a305f90c4a8003f29e887e064, type: 3}
       propertyPath: m_RootOrder
       value: 0

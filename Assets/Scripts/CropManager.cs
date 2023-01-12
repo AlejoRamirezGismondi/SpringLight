@@ -43,7 +43,7 @@ public class CropManager : MonoBehaviour, SceneTransition.ISceneObserver
     {
         for (var i = 0; i < _cropTiles.Length; i++)
         {
-            
+            _cropTiles[i].Initialize();
         }
     }
 

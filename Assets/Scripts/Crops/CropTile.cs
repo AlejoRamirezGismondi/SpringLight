@@ -80,27 +80,38 @@ namespace Crops
             if (_watered) _spriteRenderer.color = new Color(0.4f, 0.4f, 0.4f, 1f);
         }
         
-        // public CropTileObject GetCropTileObject()
-        // {
-        //     CropTileObject cropTileObject = ScriptableObject.CreateInstance<CropTileObject>();
-        //     cropTileObject.initialState = initialState;
-        //     cropTileObject.state = State;
-        //     cropTileObject.watered = _watered;
-        //     cropTileObject.sprite = _spriteRenderer.sprite;
-        //     cropTileObject.cropSprite = cropSpriteRenderer.sprite;
-        //     return cropTileObject;
-        // }
-        //
-        // public void LoadFromCropTileObject(CropTileObject cropTileObject)
-        // {
-        //     initialState = cropTileObject.initialState;
-        //     State = cropTileObject.state;
-        //     
-        //     _watered = cropTileObject.watered;
-        //     UpdateWateredColor();
-        //
-        //     _spriteRenderer.sprite = cropTileObject.sprite;
-        //     if (cropTileObject.cropSprite) cropSpriteRenderer.sprite = cropTileObject.cropSprite;
-        // }
+        public CropTileData GetCropTileData()
+        {
+            CropTileData cropTileData = new CropTileData
+            {
+                initialState = initialState,
+                state = State,
+                watered = _watered,
+                sprite = _spriteRenderer.sprite,
+                cropSprite = cropSpriteRenderer.sprite
+            };
+            return cropTileData;
+        }
+        
+        public void LoadFromCropTileData(CropTileData cropTileData)
+        {
+            initialState = cropTileData.initialState;
+            State = cropTileData.state;
+            
+            _watered = cropTileData.watered;
+            UpdateWateredColor();
+        
+            _spriteRenderer.sprite = cropTileData.sprite;
+            if (cropTileData.cropSprite) cropSpriteRenderer.sprite = cropTileData.cropSprite;
+        }
+    }
+
+    public class CropTileData
+    {
+        public CropState initialState;
+        public CropState state;
+        public bool watered;
+        public Sprite sprite;
+        public Sprite cropSprite;
     }
 }

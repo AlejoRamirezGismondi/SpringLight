@@ -10,9 +10,4 @@ namespace Crops.Scripts
         public abstract void Initialize(CropTile cropTile);
         public abstract void OnNextDay();
     }
-    
-    // public class GrownState : CropState
-    // {
-    //     
-    // }
 }
