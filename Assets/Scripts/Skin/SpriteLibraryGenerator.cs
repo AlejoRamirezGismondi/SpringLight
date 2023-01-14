@@ -3,7 +3,6 @@ using System.Linq;
 using Skin.UI;
 using UnityEngine;
 using UnityEngine.U2D.Animation;
-using static UnityEditor.AssetDatabase;
 
 namespace Skin
 {
@@ -33,8 +32,8 @@ namespace Skin
                 else spriteLib.AddCategoryLabel(sprites[i], "Walk_Left", i.ToString());
             }
 
-            CreateAsset(spriteLib, "Assets/Artwork/Character/Resources/Sprite_Libraries/" + name + ".asset");
-            SaveAssets();
+            // CreateAsset(spriteLib, "Assets/Artwork/Character/Resources/Sprite_Libraries/" + name + ".asset");
+            // SaveAssets();
         
             characterSkinManager.RefreshSpriteLibraryAssets();
         }

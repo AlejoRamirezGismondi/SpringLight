@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Skin.UI;
-using UnityEditor;
 using UnityEngine;
 
 namespace Skin
@@ -44,8 +43,8 @@ namespace Skin
         private void RefreshSkin(string name)
         {
             List<string> failed = new List<string>();
-            AssetDatabase.DeleteAssets(new[] { $"Assets/Artwork/Character/Resources/{name}" }, failed);
-            AssetDatabase.DeleteAsset($"Assets/Artwork/Character/Resources/Sprite_Libraries/{name}");
+            // AssetDatabase.DeleteAssets(new[] { $"Assets/Artwork/Character/Resources/{name}" }, failed);
+            // AssetDatabase.DeleteAsset($"Assets/Artwork/Character/Resources/Sprite_Libraries/{name}");
             if (failed.Count <= 0) GetSkin();
             else
             {
