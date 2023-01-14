@@ -10,6 +10,7 @@ namespace Crops
         private CropState State { set; get; }
         [SerializeField] private CropState initialState;
         [SerializeField] private SpriteRenderer cropSpriteRenderer;
+        [SerializeField] private CropState[] cropStates;
         private SpriteRenderer _spriteRenderer;
         private bool _watered;
 
@@ -19,6 +20,7 @@ namespace Crops
         {
             _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
             State = initialState;
+            State.Initialize(this);
         }
 
         public override void Interact(InventoryComponent inventoryComponent)
@@ -84,34 +86,24 @@ namespace Crops
         {
             CropTileData cropTileData = new CropTileData
             {
-                initialState = initialState,
-                state = State,
-                watered = _watered,
-                sprite = _spriteRenderer.sprite,
-                cropSprite = cropSpriteRenderer.sprite
+                State = State,
+                Watered = _watered,
             };
             return cropTileData;
         }
         
         public void LoadFromCropTileData(CropTileData cropTileData)
         {
-            initialState = cropTileData.initialState;
-            State = cropTileData.state;
+            State = cropTileData.State;
             
-            _watered = cropTileData.watered;
+            _watered = cropTileData.Watered;
             UpdateWateredColor();
-        
-            _spriteRenderer.sprite = cropTileData.sprite;
-            if (cropTileData.cropSprite) cropSpriteRenderer.sprite = cropTileData.cropSprite;
         }
     }
 
     public class CropTileData
     {
-        public CropState initialState;
-        public CropState state;
-        public bool watered;
-        public Sprite sprite;
-        public Sprite cropSprite;
+        public CropState State;
+        public bool Watered;
     }
 }

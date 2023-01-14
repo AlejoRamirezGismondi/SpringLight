@@ -5,16 +5,16 @@ using UnityEngine;
 
 namespace DataPersistence
 {
-    public class DataPersistenceManager : MonoBehaviour
+    public class DataPersistenceManager : MonoBehaviour, SceneTransition.ISceneObserver
     {
         [Header("File Storage Config")]
         [SerializeField] private string fileName;
         
-        private GameData gameData;
+        private GameData _gameData;
         private List<IDataPersistence> _dataPersistenceObjects;
         private FileDataHandler _fileDataHandler;
 
-        public static DataPersistenceManager Instance { get; private set; }
+        private static DataPersistenceManager Instance { get; set; }
 
         private void Awake()
         {
@@ -33,6 +33,11 @@ namespace DataPersistence
         {
             _fileDataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
             _dataPersistenceObjects = FindAllDataPersistenceObjects();
+            
+            SceneTransition[] sceneTransitions = FindObjectsOfType<SceneTransition>();
+            if (sceneTransitions.Length > 0)
+                foreach (var sceneTransition in sceneTransitions) sceneTransition.AddObserver(this);
+            
             LoadGame();
         }
 
@@ -42,33 +47,38 @@ namespace DataPersistence
             return new List<IDataPersistence>(dataPersistenceObjects);
         }
 
-        public void NewGame()
+        private void NewGame()
         {
-            gameData = new GameData();
+            _gameData = new GameData();
         }
 
-        public void LoadGame()
+        private void LoadGame()
         {
-            gameData = _fileDataHandler.Load();
+            _gameData = _fileDataHandler.Load();
             
             // Load any saved data from a file using the data handler
             // if no data can be loaded, initialize a new game
-            if (gameData == null)
+            if (_gameData == null)
             {
                 Debug.Log("No save data found, starting a new game");
                 NewGame();
             }
             // Push the loaded data to all other scripts that need it
-            foreach (var dataPersistenceObject in _dataPersistenceObjects) dataPersistenceObject.LoadData(gameData);
+            foreach (var dataPersistenceObject in _dataPersistenceObjects) dataPersistenceObject.LoadData(_gameData);
         }
-        
-        public void SaveGame()
+
+        private void SaveGame()
         {
-            foreach (var dataPersistenceObject in _dataPersistenceObjects) dataPersistenceObject.SaveData(gameData);
-            _fileDataHandler.Save(gameData);
+            foreach (var dataPersistenceObject in _dataPersistenceObjects) dataPersistenceObject.SaveData(_gameData);
+            _fileDataHandler.Save(_gameData);
         }
 
         public void OnApplicationQuit()
+        {
+            SaveGame();
+        }
+
+        public void OnSceneAboutToChange()
         {
             SaveGame();
         }

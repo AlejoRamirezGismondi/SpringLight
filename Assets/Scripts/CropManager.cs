@@ -1,25 +1,19 @@
 using System;
-using System.IO;
+using System.Collections.Generic;
 using Crops;
-using Crops.Scripts;
+using DataPersistence;
+using DataPersistence.Data;
 using UnityEngine;
 
-public class CropManager : MonoBehaviour, SceneTransition.ISceneObserver
+public class CropManager : MonoBehaviour, IDataPersistence
 {
     private CropTile[] _cropTiles;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        SceneTransition[] sceneTransitions = FindObjectsOfType<SceneTransition>();
-        if (sceneTransitions.Length > 0)
-        {
-            foreach (var sceneTransition in sceneTransitions) sceneTransition.AddObserver(this);
-        }
-
         _cropTiles = FindObjectsOfType<CropTile>();
         Array.Sort(_cropTiles, (a, b) => string.Compare(a.name, b.name, StringComparison.Ordinal));
-        LoadCropTilesFromAssets();
     }
 
     public void NextDay()
@@ -30,25 +24,21 @@ public class CropManager : MonoBehaviour, SceneTransition.ISceneObserver
         }
     }
 
+    public void LoadData(GameData data)
+    {
+        for (var i = 0; i < _cropTiles.Length; i++)
+        {
+            var cropTile = _cropTiles[i];
+            cropTile.Initialize();
+            cropTile.LoadFromCropTileData(JsonUtility.FromJson<CropTileData>(data.cropTiles[i]));
+        }
+    }
+
     // This method assumes that the FindObjectsOfType will always get the CropTiles in the same order and that the Load will do as well
-    private void SaveCropTilesToAssets()
+    public void SaveData(GameData data)
     {
-        for (var i = 0; i < _cropTiles.Length; i++)
-        {
-            
-        }
-    }
-
-    private void LoadCropTilesFromAssets()
-    {
-        for (var i = 0; i < _cropTiles.Length; i++)
-        {
-            _cropTiles[i].Initialize();
-        }
-    }
-
-    public void OnSceneAboutToChange()
-    {
-        SaveCropTilesToAssets();
+        data.cropTiles = new List<string>();
+        foreach (var cropTile in _cropTiles) 
+            data.cropTiles.Add(JsonUtility.ToJson(cropTile.GetCropTileData()));
     }
 }

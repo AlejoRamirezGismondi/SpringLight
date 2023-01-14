@@ -8,12 +8,11 @@ namespace Crops.Scripts
     public class GrownState : CropState
     {
         public CropObject cropObject;
-        public int amountOfProduce;
-        
+
         public override void Interact(CropTile cropTile, InventoryComponent inventoryComponent)
         {
             if (inventoryComponent.GetSelectedSlot().itemObject is not ToolObject { toolType: ToolType.Scythe }) return;
-            inventoryComponent.AddItem(cropObject.produce, amountOfProduce);
+            inventoryComponent.AddItem(cropObject.produce, cropObject.amountOfProduce);
             cropTile.SetState(nextState);
         }
 

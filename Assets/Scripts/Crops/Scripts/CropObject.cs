@@ -11,5 +11,6 @@ namespace Crops.Scripts
         public Sprite grownSprite;
         public int daysToGrow;
         public ProduceObject produce;
+        public int amountOfProduce = 5;
     }
 }

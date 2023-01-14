@@ -7,29 +7,25 @@ namespace DataPersistence
 {
     public class FileDataHandler
     {
-        private string dataDirPath = "";
-        private string dataFileName = "";
+        private readonly string _dataDirPath;
+        private readonly string _dataFileName;
         
         public FileDataHandler(string dataDirPath, string dataFileName)
         {
-            this.dataDirPath = dataDirPath;
-            this.dataFileName = dataFileName;
+            _dataDirPath = dataDirPath;
+            _dataFileName = dataFileName;
         }
         
         public void Save(GameData data)
         {
-            string fullpath = Path.Combine(dataDirPath, dataFileName);
+            string fullpath = Path.Combine(_dataDirPath, _dataFileName);
             try
             {
                 Directory.CreateDirectory(Path.GetDirectoryName(fullpath));
                 string json = JsonUtility.ToJson(data, true);
-                using (FileStream stream = new FileStream(fullpath, FileMode.Create))
-                {
-                    using (StreamWriter writer = new StreamWriter(stream))
-                    {
-                        writer.Write(json);
-                    }
-                }
+                using FileStream stream = new FileStream(fullpath, FileMode.Create);
+                using StreamWriter writer = new StreamWriter(stream);
+                writer.Write(json);
             }
             catch (Exception e)
             {
@@ -39,13 +35,13 @@ namespace DataPersistence
         
         public GameData Load()
         {
-            string fullpath = Path.Combine(dataDirPath, dataFileName);
+            string fullpath = Path.Combine(_dataDirPath, _dataFileName);
             GameData loadedData = null;
             if (File.Exists(fullpath))
             {
                 try
                 {
-                    string dataToLoad = "";
+                    string dataToLoad;
                     using (FileStream stream = new FileStream(fullpath, FileMode.Open))
                     {
                         using (StreamReader reader = new StreamReader(stream))

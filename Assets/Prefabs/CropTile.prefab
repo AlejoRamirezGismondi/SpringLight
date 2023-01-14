@@ -62,6 +62,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialState: {fileID: 11400000, guid: 4f3da66dd5bc3bb478fed45447396101, type: 2}
   cropSpriteRenderer: {fileID: 4222613015820855885}
+  cropStates:
+  - {fileID: 11400000, guid: 4f3da66dd5bc3bb478fed45447396101, type: 2}
+  - {fileID: 11400000, guid: 8361b416b10ff274ba6c552d2780f0e4, type: 2}
+  - {fileID: 11400000, guid: 8959f2b607b614948a3a8b42c3182479, type: 2}
+  - {fileID: 11400000, guid: a764d07e1ad4c6b41b0fd7bcbf94d8c1, type: 2}
+  - {fileID: 11400000, guid: 88a5fc45294d91d42b2efa60ceb1e7d4, type: 2}
 --- !u!61 &1510754314334755338
 BoxCollider2D:
   m_ObjectHideFlags: 0
