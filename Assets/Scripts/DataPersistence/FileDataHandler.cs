@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using DataPersistence.Data;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace DataPersistence
@@ -22,7 +23,7 @@ namespace DataPersistence
             try
             {
                 Directory.CreateDirectory(Path.GetDirectoryName(fullpath));
-                string json = JsonUtility.ToJson(data, true);
+                string json = JsonConvert.SerializeObject(data);
                 using FileStream stream = new FileStream(fullpath, FileMode.Create);
                 using StreamWriter writer = new StreamWriter(stream);
                 writer.Write(json);

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using DataPersistence.Data;
 using UnityEngine;
@@ -38,6 +39,7 @@ namespace DataPersistence
             if (sceneTransitions.Length > 0)
                 foreach (var sceneTransition in sceneTransitions) sceneTransition.AddObserver(this);
             
+            // DeleteAllSaveData();
             LoadGame();
         }
 
@@ -81,6 +83,21 @@ namespace DataPersistence
         public void OnSceneAboutToChange()
         {
             SaveGame();
+        }
+
+        private void DeleteAllSaveData()
+        {
+            foreach (var directory in Directory.GetDirectories(Application.persistentDataPath))
+            {
+                DirectoryInfo data_dir = new DirectoryInfo(directory);
+                data_dir.Delete(true);
+            }
+     
+            foreach (var file in Directory.GetFiles(Application.persistentDataPath))
+            {
+                FileInfo file_info = new FileInfo(file);
+                file_info.Delete();
+            }
         }
     }
 }

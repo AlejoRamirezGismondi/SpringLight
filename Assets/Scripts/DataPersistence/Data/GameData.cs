@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Crops;
 
 namespace DataPersistence.Data
 {
@@ -7,12 +8,12 @@ namespace DataPersistence.Data
     public class GameData
     {
         public int coins;
-        public List<string> cropTiles;
+        public List<CropTileData> CropTileDataList;
 
         public GameData()
         {
             coins = 0;
-            cropTiles = new List<string>();
+            CropTileDataList = new List<CropTileData>();
         }
     }
 }

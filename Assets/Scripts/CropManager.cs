@@ -14,6 +14,8 @@ public class CropManager : MonoBehaviour, IDataPersistence
     {
         _cropTiles = FindObjectsOfType<CropTile>();
         Array.Sort(_cropTiles, (a, b) => string.Compare(a.name, b.name, StringComparison.Ordinal));
+        foreach (var cropTile in _cropTiles)
+            cropTile.Initialize();
     }
 
     public void NextDay()
@@ -26,19 +28,18 @@ public class CropManager : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
-        for (var i = 0; i < _cropTiles.Length; i++)
+        for (var i = 0; i < data.CropTileDataList.Count; i++)
         {
             var cropTile = _cropTiles[i];
-            cropTile.Initialize();
-            cropTile.LoadFromCropTileData(JsonUtility.FromJson<CropTileData>(data.cropTiles[i]));
+            cropTile.LoadFromCropTileData(data.CropTileDataList[i]);
         }
     }
 
     // This method assumes that the FindObjectsOfType will always get the CropTiles in the same order and that the Load will do as well
     public void SaveData(GameData data)
     {
-        data.cropTiles = new List<string>();
+        data.CropTileDataList = new List<CropTileData>();
         foreach (var cropTile in _cropTiles) 
-            data.cropTiles.Add(JsonUtility.ToJson(cropTile.GetCropTileData()));
+            data.CropTileDataList.Add(cropTile.GetCropTileData());
     }
 }
