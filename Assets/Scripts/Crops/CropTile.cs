@@ -23,6 +23,12 @@ namespace Crops
             State.Initialize(this);
         }
 
+        public void Reset()
+        {
+            State = initialState;
+            State.Initialize(this);
+        }
+
         public override void Interact(InventoryComponent inventoryComponent)
         {
             if (inventoryComponent.GetSelectedSlot().itemObject.type == ItemType.Tool)
@@ -38,6 +44,7 @@ namespace Crops
                     }
                 }
             }
+
             State.Interact(this, inventoryComponent);
         }
 
@@ -81,7 +88,7 @@ namespace Crops
         {
             if (_watered) _spriteRenderer.color = new Color(0.4f, 0.4f, 0.4f, 1f);
         }
-        
+
         public CropTileData GetCropTileData()
         {
             CropTileData cropTileData = new CropTileData
@@ -91,11 +98,11 @@ namespace Crops
             };
             return cropTileData;
         }
-        
+
         public void LoadFromCropTileData(CropTileData cropTileData)
         {
             State = cropTileData.State;
-            
+
             _watered = cropTileData.Watered;
             UpdateWateredColor();
         }

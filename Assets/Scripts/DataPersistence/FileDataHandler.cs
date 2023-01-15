@@ -22,11 +22,15 @@ namespace DataPersistence
             string fullpath = Path.Combine(_dataDirPath, _dataFileName);
             try
             {
-                Directory.CreateDirectory(Path.GetDirectoryName(fullpath));
-                string json = JsonConvert.SerializeObject(data);
-                using FileStream stream = new FileStream(fullpath, FileMode.Create);
-                using StreamWriter writer = new StreamWriter(stream);
-                writer.Write(json);
+                // Directory.CreateDirectory(Path.GetDirectoryName(fullpath));
+                // var settings = new JsonSerializerSettings
+                // {
+                //     ReferenceLoopHandling = ReferenceLoopHandling.Serialize
+                // };
+                // string json = JsonConvert.SerializeObject(data, settings);
+                // using FileStream stream = new FileStream(fullpath, FileMode.Create);
+                // using StreamWriter writer = new StreamWriter(stream);
+                // writer.Write(json);
             }
             catch (Exception e)
             {
@@ -50,8 +54,12 @@ namespace DataPersistence
                             dataToLoad = reader.ReadToEnd();
                         }
                     }
-                    
-                    loadedData = JsonUtility.FromJson<GameData>(dataToLoad);
+
+                    var settings = new JsonSerializerSettings
+                    {
+                        ReferenceLoopHandling = ReferenceLoopHandling.Serialize
+                    };
+                    loadedData = JsonConvert.DeserializeObject<GameData>(dataToLoad, settings);
                 }
                 catch (Exception e)
                 {

@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49be28cf6d4e40b9817160c02bd8e06b, type: 3}
   m_Name: Grown
   m_EditorClassIdentifier: 
-  nextState: {fileID: 11400000, guid: 4f3da66dd5bc3bb478fed45447396101, type: 2}
+  nextState: {fileID: 0}
   cropObject: {fileID: 0}
-  amountOfProduce: 5

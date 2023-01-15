@@ -39,7 +39,7 @@ namespace DataPersistence
             if (sceneTransitions.Length > 0)
                 foreach (var sceneTransition in sceneTransitions) sceneTransition.AddObserver(this);
             
-            // DeleteAllSaveData();
+            DeleteAllSaveData();
             LoadGame();
         }
 

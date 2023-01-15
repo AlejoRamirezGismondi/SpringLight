@@ -13,7 +13,7 @@ namespace Crops.Scripts
         {
             if (inventoryComponent.GetSelectedSlot().itemObject is not ToolObject { toolType: ToolType.Scythe }) return;
             inventoryComponent.AddItem(cropObject.produce, cropObject.amountOfProduce);
-            cropTile.SetState(nextState);
+            cropTile.Reset();
         }
 
         public override void Initialize(CropTile cropTile)
