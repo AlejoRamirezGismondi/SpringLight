@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
 
     private bool _isMoving;
+    private bool MovementEnabled = true;
 
     private bool _wasMovingInX;
     private Vector2 _input;
@@ -75,7 +76,7 @@ public class PlayerController : MonoBehaviour
         anim.SetBool(isMoving, true);
         AnimateMovement();
 
-        while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon)
+        while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon && MovementEnabled)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
             yield return null;
@@ -84,6 +85,16 @@ public class PlayerController : MonoBehaviour
         transform.position = targetPos;
 
         _isMoving = false;
+    }
+
+    public void EnableMovement()
+    {
+        MovementEnabled = true;
+    }
+    
+    public void DisableMovement()
+    {
+        MovementEnabled = false;
     }
 
     private void AnimateMovement()
