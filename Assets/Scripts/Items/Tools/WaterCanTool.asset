@@ -17,3 +17,4 @@ MonoBehaviour:
   uniqueItem: 1
   toolType: 2
   waterAmount: 5
+  waterCapacity: 5

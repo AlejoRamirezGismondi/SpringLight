@@ -5464,6 +5464,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0071da0ce10190b48be82e38ab8fe9b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waterCanToolObject: {fileID: 11400000, guid: e1b8062ab963e02469c523ed08f1dbf6, type: 2}
+  water: 100
 --- !u!60 &810345799 stripped
 PolygonCollider2D:
   m_CorrespondingSourceObject: {fileID: 3234374447140958886, guid: e218a84a305f90c4a8003f29e887e064, type: 3}
