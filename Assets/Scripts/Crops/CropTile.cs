@@ -2,10 +2,11 @@
 using Inventory.Scripts;
 using Items.Scripts;
 using UnityEngine;
+using Widgets;
 
 namespace Crops
 {
-    public class CropTile : Interactable
+    public class CropTile : Interactable, IDayChangeObserver
     {
         private CropState State { set; get; }
         [SerializeField] private CropState initialState;

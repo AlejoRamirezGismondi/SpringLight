@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryDisplayPrefab: {fileID: 6586623135588431644, guid: 2aabc972a2a5b2c4f954f99b02025b3c, type: 3}
   type: 3
+  uniqueItem: 0
+  value: 1

@@ -1,15 +1,18 @@
+using System.Collections.Generic;
+using System.Linq;
 using Inventory.Scripts;
+using UnityEngine;
 
 namespace Widgets
 {
     public class Bed : Interactable
     {
-        private CropManager _cropManager;
+        private List<IDayChangeObserver> _dayChangeObservers;
     
         // Start is called before the first frame update
         void Start()
         {
-            _cropManager = FindObjectOfType<CropManager>();
+            _dayChangeObservers = new List<IDayChangeObserver>(FindObjectsOfType<MonoBehaviour>().OfType<IDayChangeObserver>());
         }
     
         public override void Interact(InventoryComponent inventoryComponent)
@@ -18,9 +21,9 @@ namespace Widgets
         }
     
         private void Sleep()
-        { 
+        {
             // TODO Play animation of fade out
-            _cropManager.NextDay();
+            foreach (var dayChangeObserver in _dayChangeObservers) dayChangeObserver.NextDay();
         }
     }
 }
