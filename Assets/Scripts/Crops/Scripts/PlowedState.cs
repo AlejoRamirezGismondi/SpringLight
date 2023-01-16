@@ -4,23 +4,22 @@ using UnityEngine;
 
 namespace Crops.Scripts
 {
-    [CreateAssetMenu(fileName = "New CropState", menuName = "CropState/Plowed")]
     public class PlowedState : CropState
     {
-        public Sprite sprite;
         public override void Interact(CropTile cropTile, InventoryComponent inventoryComponent)
         {
             if (inventoryComponent.GetSelectedSlot().itemObject is not SeedObject o) return;
             // Maybe there is a better way to do this
-            SeededState s = (SeededState)nextState;
+            SeededState s = new SeededState();
             s.SetSeedObject(o);
-            cropTile.SetState(nextState);
+            cropTile.SetState(s);
             inventoryComponent.RemoveSelectedItem(1);
         }
 
         public override void Initialize(CropTile cropTile)
         {
-            cropTile.SetSprite(sprite);
+            var sprites = Resources.LoadAll<Sprite>("CropStateSprites");
+            cropTile.SetSprite(sprites[1]);
             cropTile.SetCropSprite(null);
         }
 

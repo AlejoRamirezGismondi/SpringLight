@@ -1,10 +1,8 @@
 ﻿using Inventory.Scripts;
 using Items.Scripts;
-using UnityEngine;
 
 namespace Crops.Scripts
 {
-    [CreateAssetMenu(fileName = "New CropState", menuName = "CropState/Seeded")]
     public class SeededState : CropState
     {
         private CropTile _cropTile;
@@ -29,9 +27,11 @@ namespace Crops.Scripts
         public override void OnNextDay()
         {
             if (!_cropTile.IsWatered()) return;
-            GrowingState g = (GrowingState)nextState;
-            g.cropObject = _seedObject.cropObject;
-            _cropTile.SetState(nextState);
+            GrowingState g = new GrowingState
+            {
+                CropObject = _seedObject.cropObject
+            };
+            _cropTile.SetState(g);
         }
     }
 }

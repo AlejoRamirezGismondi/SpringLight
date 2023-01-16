@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace Crops.Scripts
 {
-    [CreateAssetMenu(fileName = "New CropState", menuName = "CropState/Grown")]
     public class GrownState : CropState
     {
         public CropObject cropObject;

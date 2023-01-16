@@ -9,9 +9,7 @@ namespace Crops
     public class CropTile : Interactable, IDayChangeObserver
     {
         private CropState State { set; get; }
-        [SerializeField] private CropState initialState;
         [SerializeField] private SpriteRenderer cropSpriteRenderer;
-        [SerializeField] private CropState[] cropStates;
         private SpriteRenderer _spriteRenderer;
         private bool _watered;
 
@@ -20,13 +18,13 @@ namespace Crops
         public void Initialize()
         {
             _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-            State = initialState;
+            State = new UnplowedState();
             State.Initialize(this);
         }
 
         public void Reset()
         {
-            State = initialState;
+            State = new UnplowedState();
             State.Initialize(this);
         }
 

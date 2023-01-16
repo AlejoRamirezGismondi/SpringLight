@@ -4,20 +4,18 @@ using UnityEngine;
 
 namespace Crops.Scripts
 {
-    [CreateAssetMenu(fileName = "New CropState", menuName = "CropState/Unplowed")]
     public class UnplowedState : CropState
     {
-        public Sprite sprite;
-
         public override void Interact(CropTile cropTile, InventoryComponent inventoryComponent)
         {
             if (inventoryComponent.GetSelectedSlot().itemObject is not ToolObject t) return;
-            if (t.toolType == ToolType.Hoe) cropTile.SetState(nextState);
+            if (t.toolType == ToolType.Hoe) cropTile.SetState(new PlowedState());
         }
         
         public override void Initialize(CropTile cropTile)
         {
-            cropTile.SetSprite(sprite);
+            var sprites = Resources.LoadAll<Sprite>("CropStateSprites");
+            cropTile.SetSprite(sprites[0]);
             cropTile.SetCropSprite(null);
         }
 

@@ -1,13 +1,11 @@
 ﻿using Inventory.Scripts;
-using UnityEngine;
 
 namespace Crops.Scripts
 {
-    [CreateAssetMenu(fileName = "New CropState", menuName = "CropState/Growing")]
     public class GrowingState : CropState
     {
         private CropTile _cropTile;
-        public CropObject cropObject;
+        public CropObject CropObject;
         private int _elapsedDays;
         
         public override void Interact(CropTile cropTile, InventoryComponent inventoryComponent)
@@ -18,17 +16,19 @@ namespace Crops.Scripts
         public override void Initialize(CropTile cropTile)
         {
             _cropTile = cropTile;
-            cropTile.SetCropSprite(cropObject.growingSprite);
+            cropTile.SetCropSprite(CropObject.growingSprite);
         }
 
         public override void OnNextDay()
         {
             if (!_cropTile.IsWatered()) return;
-            if (_elapsedDays >= cropObject.daysToGrow)
+            if (_elapsedDays >= CropObject.daysToGrow)
             {
-                GrownState g = (GrownState)nextState;
-                g.cropObject = cropObject;
-                _cropTile.SetState(nextState);
+                GrownState g = new GrownState
+                {
+                    cropObject = CropObject
+                };
+                _cropTile.SetState(g);
             }
             else _elapsedDays++;
         }
