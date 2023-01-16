@@ -11,4 +11,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Farm.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Puzzle2.unity
+    guid: 8c7f5b7b6f96e024aa640e80091168e9
+  - enabled: 1
+    path: Assets/Scenes/Puzzle1.unity
+    guid: a92e07ba03336a0489aec2f41015f594
+  - enabled: 1
+    path: Assets/Scenes/Puzzle3.unity
+    guid: 607cffc63b7448341954ba75675e9814
+  - enabled: 1
+    path: Assets/Scenes/Puzzle5.unity
+    guid: ce1174afff97edb4b8830d862d415667
   m_configObjects: {}
