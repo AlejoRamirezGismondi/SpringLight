@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Puzzle5
 {
-    public class ThinIceManager : MonoBehaviour
+    public class ThinIceManager : MonoBehaviour, IConditionalTeleportManager
     {
         [SerializeField] private PlayerController playerController;
         [SerializeField] private GameObject target;
@@ -16,8 +16,13 @@ namespace Puzzle5
 
         public void PlayerHasFallen(GameObject player)
         {
-            foreach (var thinIce in _thinIceList) thinIce.Reset();
+            ResetThinIce();
             StartCoroutine(Teleport(player));
+        }
+
+        private void ResetThinIce()
+        {
+            foreach (var thinIce in _thinIceList) thinIce.Reset();
         }
         
         private IEnumerator Teleport(GameObject player)
@@ -27,6 +32,24 @@ namespace Puzzle5
             player.transform.position = target.transform.position;
             yield return new WaitForSeconds(0.01f);
             playerController.EnableMovement();
+        }
+
+        public bool CanTeleport()
+        {
+            bool canTeleport = true;
+            foreach (var thinIce in _thinIceList)
+                if (!thinIce.IsConsumed()) canTeleport = false;
+            return canTeleport;
+        }
+
+        public void FailTeleported()
+        {
+            ResetThinIce();
+        }
+
+        public void SuccessTeleported()
+        {
+            ResetThinIce();
         }
     }
 }

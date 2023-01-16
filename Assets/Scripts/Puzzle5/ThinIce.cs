@@ -40,5 +40,10 @@ namespace Puzzle5
             _consumed = false;
             _spriteRenderer.enabled = true;
         }
+
+        public bool IsConsumed()
+        {
+            return _consumed;
+        }
     }
 }
