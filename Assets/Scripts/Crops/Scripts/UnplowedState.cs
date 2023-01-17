@@ -1,9 +1,11 @@
 ﻿using Inventory.Scripts;
 using Items.Scripts;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace Crops.Scripts
 {
+    [JsonObject(MemberSerialization.Fields)]
     public class UnplowedState : CropState
     {
         public override void Interact(CropTile cropTile, InventoryComponent inventoryComponent)

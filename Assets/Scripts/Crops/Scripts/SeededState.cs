@@ -1,12 +1,14 @@
 ﻿using Inventory.Scripts;
 using Items.Scripts;
+using Newtonsoft.Json;
 
 namespace Crops.Scripts
 {
+    [JsonObject(MemberSerialization.OptIn)]
     public class SeededState : CropState
     {
         private CropTile _cropTile;
-        private SeedObject _seedObject;
+        [JsonProperty] private SeedObject _seedObject;
 
         public void SetSeedObject(SeedObject seedObject)
         {

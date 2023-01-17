@@ -1,9 +1,10 @@
 ﻿using Inventory.Scripts;
 using Items.Scripts;
-using UnityEngine;
+using Newtonsoft.Json;
 
 namespace Crops.Scripts
 {
+    [JsonObject(MemberSerialization.Fields)]
     public class GrownState : CropState
     {
         public CropObject cropObject;

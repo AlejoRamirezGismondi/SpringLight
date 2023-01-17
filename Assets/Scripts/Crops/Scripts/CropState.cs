@@ -1,9 +1,9 @@
 ﻿using Inventory.Scripts;
-using UnityEngine;
-using Widgets;
+using Newtonsoft.Json;
 
 namespace Crops.Scripts
 {
+    [JsonObject(MemberSerialization.Fields)]
     public abstract class CropState
     {
         public abstract void Interact(CropTile cropTile, InventoryComponent inventoryComponent);

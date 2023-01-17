@@ -1,12 +1,14 @@
 ﻿using Inventory.Scripts;
+using Newtonsoft.Json;
 
 namespace Crops.Scripts
 {
+    [JsonObject(MemberSerialization.OptIn)]
     public class GrowingState : CropState
     {
         private CropTile _cropTile;
-        public CropObject CropObject;
-        private int _elapsedDays;
+        [JsonProperty] public CropObject CropObject;
+        [JsonProperty] private int _elapsedDays;
         
         public override void Interact(CropTile cropTile, InventoryComponent inventoryComponent)
         {

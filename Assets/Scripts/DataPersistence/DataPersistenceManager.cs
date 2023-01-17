@@ -39,7 +39,7 @@ namespace DataPersistence
             if (sceneTransitions.Length > 0)
                 foreach (var sceneTransition in sceneTransitions) sceneTransition.AddObserver(this);
             
-            DeleteAllSaveData();
+            // DeleteAllSaveData();
             LoadGame();
         }
 
@@ -89,14 +89,14 @@ namespace DataPersistence
         {
             foreach (var directory in Directory.GetDirectories(Application.persistentDataPath))
             {
-                DirectoryInfo data_dir = new DirectoryInfo(directory);
-                data_dir.Delete(true);
+                DirectoryInfo dataDir = new DirectoryInfo(directory);
+                dataDir.Delete(true);
             }
      
             foreach (var file in Directory.GetFiles(Application.persistentDataPath))
             {
-                FileInfo file_info = new FileInfo(file);
-                file_info.Delete();
+                FileInfo fileInfo = new FileInfo(file);
+                fileInfo.Delete();
             }
         }
     }

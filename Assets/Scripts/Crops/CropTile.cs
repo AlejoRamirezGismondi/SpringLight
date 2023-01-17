@@ -1,6 +1,7 @@
 ﻿using Crops.Scripts;
 using Inventory.Scripts;
 using Items.Scripts;
+using Newtonsoft.Json;
 using UnityEngine;
 using Widgets;
 
@@ -101,12 +102,14 @@ namespace Crops
         public void LoadFromCropTileData(CropTileData cropTileData)
         {
             State = cropTileData.State;
+            State.Initialize(this);
 
             _watered = cropTileData.Watered;
             UpdateWateredColor();
         }
     }
-
+    
+    [JsonObject(MemberSerialization.Fields)]
     public class CropTileData
     {
         public CropState State;

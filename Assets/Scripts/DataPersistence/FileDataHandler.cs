@@ -10,11 +10,16 @@ namespace DataPersistence
     {
         private readonly string _dataDirPath;
         private readonly string _dataFileName;
+        private readonly JsonSerializerSettings _settings;
         
         public FileDataHandler(string dataDirPath, string dataFileName)
         {
             _dataDirPath = dataDirPath;
             _dataFileName = dataFileName;
+            _settings = new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Auto
+            };
         }
         
         public void Save(GameData data)
@@ -22,15 +27,15 @@ namespace DataPersistence
             string fullpath = Path.Combine(_dataDirPath, _dataFileName);
             try
             {
-                // Directory.CreateDirectory(Path.GetDirectoryName(fullpath));
-                // var settings = new JsonSerializerSettings
-                // {
-                //     ReferenceLoopHandling = ReferenceLoopHandling.Serialize
-                // };
-                // string json = JsonConvert.SerializeObject(data, settings);
-                // using FileStream stream = new FileStream(fullpath, FileMode.Create);
-                // using StreamWriter writer = new StreamWriter(stream);
-                // writer.Write(json);
+                Directory.CreateDirectory(Path.GetDirectoryName(fullpath));
+                string json = JsonConvert.SerializeObject(data, Formatting.Indented, _settings);
+                
+                // TODO DELETE LATER
+                Debug.Log(json);
+                
+                using FileStream stream = new FileStream(fullpath, FileMode.Create);
+                using StreamWriter writer = new StreamWriter(stream);
+                writer.Write(json);
             }
             catch (Exception e)
             {
@@ -54,12 +59,12 @@ namespace DataPersistence
                             dataToLoad = reader.ReadToEnd();
                         }
                     }
-
-                    var settings = new JsonSerializerSettings
-                    {
-                        ReferenceLoopHandling = ReferenceLoopHandling.Serialize
-                    };
-                    loadedData = JsonConvert.DeserializeObject<GameData>(dataToLoad, settings);
+                    
+                    // TODO DELETE LATER
+                    Debug.Log("Loading Data");
+                    // Debug.Log(dataToLoad);
+                    
+                    loadedData = JsonConvert.DeserializeObject<GameData>(dataToLoad, _settings);
                 }
                 catch (Exception e)
                 {
