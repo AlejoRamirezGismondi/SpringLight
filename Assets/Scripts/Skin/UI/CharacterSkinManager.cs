@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.U2D.Animation;
 
@@ -5,9 +6,14 @@ namespace Skin.UI
 {
     public class CharacterSkinManager : MonoBehaviour
     {
-        [SerializeField] private SpriteLibrary spriteLibrary;
+        private SpriteLibrary _spriteLibrary;
         private SpriteLibraryAsset[] _skins;
         private int _currentSkinNumber;
+
+        private void Awake()
+        {
+            _spriteLibrary = FindObjectOfType<SpriteLibrary>();
+        }
 
         // Start is called before the first frame update
         void Start()
@@ -53,8 +59,8 @@ namespace Skin.UI
 
         private void RefreshSkin()
         {
-            spriteLibrary.spriteLibraryAsset = _skins[_currentSkinNumber];
-            spriteLibrary.RefreshSpriteResolvers();
+            _spriteLibrary.spriteLibraryAsset = _skins[_currentSkinNumber];
+            _spriteLibrary.RefreshSpriteResolvers();
         }
 
         private void LoadAllSpriteLibraryAssets()

@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using DataPersistence.Data;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace DataPersistence
 {
@@ -15,7 +16,12 @@ namespace DataPersistence
         private List<IDataPersistence> _dataPersistenceObjects;
         private FileDataHandler _fileDataHandler;
 
-        private static DataPersistenceManager Instance { get; set; }
+        public static DataPersistenceManager Instance { get; private set; }
+
+        private void OnDisable()
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
 
         private void Awake()
         {
@@ -24,22 +30,19 @@ namespace DataPersistence
                 Instance = this;
                 DontDestroyOnLoad(gameObject);
             }
-            else
-            {
-                Destroy(gameObject);
-            }
+            else Destroy(gameObject);
+            _fileDataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
+            AttachToSceneObjects();
         }
 
         private void Start()
         {
-            _fileDataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
-            _dataPersistenceObjects = FindAllDataPersistenceObjects();
-            
-            SceneTransition[] sceneTransitions = FindObjectsOfType<SceneTransition>();
-            if (sceneTransitions.Length > 0)
-                foreach (var sceneTransition in sceneTransitions) sceneTransition.AddObserver(this);
-            
-            // DeleteAllSaveData();
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            AttachToSceneObjects();
             LoadGame();
         }
 
@@ -49,22 +52,22 @@ namespace DataPersistence
             return new List<IDataPersistence>(dataPersistenceObjects);
         }
 
-        private void NewGame()
+        public void NewGame()
         {
             _gameData = new GameData();
+            SceneManager.LoadSceneAsync(_gameData.sceneBuildIndex);
         }
 
-        private void LoadGame()
+        public void LoadGame()
         {
             _gameData = _fileDataHandler.Load();
             
             // Load any saved data from a file using the data handler
             // if no data can be loaded, initialize a new game
-            if (_gameData == null)
-            {
-                Debug.Log("No save data found, starting a new game");
-                NewGame();
-            }
+            if (_gameData == null) return;
+
+            SceneManager.LoadSceneAsync(_gameData.sceneBuildIndex);
+            
             // Push the loaded data to all other scripts that need it
             foreach (var dataPersistenceObject in _dataPersistenceObjects) dataPersistenceObject.LoadData(_gameData);
         }
@@ -72,6 +75,7 @@ namespace DataPersistence
         private void SaveGame()
         {
             foreach (var dataPersistenceObject in _dataPersistenceObjects) dataPersistenceObject.SaveData(_gameData);
+            _gameData.sceneBuildIndex = SceneManager.GetActiveScene().buildIndex;
             _fileDataHandler.Save(_gameData);
         }
 
@@ -83,6 +87,15 @@ namespace DataPersistence
         public void OnSceneAboutToChange()
         {
             SaveGame();
+        }
+
+        private void AttachToSceneObjects()
+        {
+            _dataPersistenceObjects = FindAllDataPersistenceObjects();
+            
+            SceneTransition[] sceneTransitions = FindObjectsOfType<SceneTransition>();
+            if (sceneTransitions.Length <= 0) return;
+            foreach (var sceneTransition in sceneTransitions) sceneTransition.AddObserver(this);
         }
 
         private void DeleteAllSaveData()
