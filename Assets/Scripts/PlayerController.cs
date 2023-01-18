@@ -1,4 +1,5 @@
 using System.Collections;
+using Interact;
 using Inventory.Scripts;
 using UnityEngine;
 

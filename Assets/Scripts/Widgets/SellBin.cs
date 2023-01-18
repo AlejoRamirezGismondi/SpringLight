@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
+using Interact;
 using Inventory.Scripts;
 using Items.Scripts;
+using UI;
 
 namespace Widgets
 {

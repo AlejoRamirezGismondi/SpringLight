@@ -1,3 +1,4 @@
+using Interact;
 using Inventory.Scripts;
 using UnityEngine;
 using UnityEngine.Serialization;

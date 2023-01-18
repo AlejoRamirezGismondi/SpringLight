@@ -1,3 +1,4 @@
+using Interact;
 using Inventory.Scripts;
 
 namespace Puzzle4

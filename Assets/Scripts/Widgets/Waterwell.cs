@@ -1,3 +1,4 @@
+using Interact;
 using Inventory.Scripts;
 using Items.Scripts;
 
