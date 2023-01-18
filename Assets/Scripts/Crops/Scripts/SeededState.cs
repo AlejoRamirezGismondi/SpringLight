@@ -1,6 +1,7 @@
 ﻿using Inventory.Scripts;
 using Items.Scripts;
 using Newtonsoft.Json;
+using UnityEngine;
 
 namespace Crops.Scripts
 {
@@ -24,6 +25,8 @@ namespace Crops.Scripts
         {
             _cropTile = cropTile;
             cropTile.SetCropSprite(_seedObject.cropObject.seedSprite);
+            var sprites = Resources.LoadAll<Sprite>("CropStateSprites");
+            cropTile.SetSprite(sprites[1]);
         }
 
         public override void OnNextDay()

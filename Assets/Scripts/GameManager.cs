@@ -1,10 +1,7 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private int sceneBuildIndex;
-
     private static GameManager Instance { get; set; }
 
     private void Awake()
@@ -18,10 +15,5 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    public void ResetGame()
-    {
-        SceneManager.LoadScene(sceneBuildIndex, LoadSceneMode.Single);
     }
 }
