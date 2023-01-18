@@ -5,19 +5,24 @@ namespace Skin.UI
 {
     public class SkinNumberDisplay : MonoBehaviour
     {
-        [SerializeField] private CharacterSkinManager characterSkinManager;
-        private TextMeshProUGUI text;
-    
+        private CharacterSkinManager _characterSkinManager;
+        private TextMeshProUGUI _text;
+
+        private void Awake()
+        {
+            _characterSkinManager = FindObjectOfType<CharacterSkinManager>();
+        }
+
         // Start is called before the first frame update
         void Start()
         {
-            text = gameObject.GetComponent<TextMeshProUGUI>();
+            _text = gameObject.GetComponent<TextMeshProUGUI>();
         }
 
         // Update is called once per frame
         void Update()
         {
-            text.text = $"{characterSkinManager.GetCurrentSkinNumber() + 1} / {characterSkinManager.GetTotalSkins()}";
+            _text.text = $"{_characterSkinManager.GetCurrentSkinNumber() + 1} / {_characterSkinManager.GetTotalSkins()}";
         }
     }
 }
