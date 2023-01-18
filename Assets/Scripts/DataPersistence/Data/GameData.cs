@@ -14,7 +14,7 @@ namespace DataPersistence.Data
 
         public GameData()
         {
-            sceneBuildIndex = 0; // 0 is the build index for the Lobby Scene, which serves as the start of the game
+            sceneBuildIndex = 1; // 1 is the build index for the Lobby Scene, which serves as the start of the game
             playerPosition = new float[3];
             coins = 0;
             CropTileDataList = new List<CropTileData>();
