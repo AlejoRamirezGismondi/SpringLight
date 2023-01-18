@@ -31,6 +31,7 @@ namespace DataPersistence
                 DontDestroyOnLoad(gameObject);
             }
             else Destroy(gameObject);
+
             _fileDataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
             AttachToSceneObjects();
         }
@@ -43,37 +44,36 @@ namespace DataPersistence
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             AttachToSceneObjects();
-            LoadGame();
-        }
-
-        private List<IDataPersistence> FindAllDataPersistenceObjects()
-        {
-            IEnumerable<IDataPersistence> dataPersistenceObjects = FindObjectsOfType<MonoBehaviour>().OfType<IDataPersistence>();
-            return new List<IDataPersistence>(dataPersistenceObjects);
+            LoadSceneProgress();
         }
 
         public void NewGame()
         {
-            _gameData = new GameData();
+            Instance._gameData = new GameData();
             SceneManager.LoadSceneAsync(_gameData.sceneBuildIndex);
         }
 
         public void LoadGame()
         {
-            _gameData = _fileDataHandler.Load();
+            GameData gameData = _fileDataHandler.Load();
             
             // Load any saved data from a file using the data handler
             // if no data can be loaded, initialize a new game
-            if (_gameData == null) return;
-
-            SceneManager.LoadSceneAsync(_gameData.sceneBuildIndex);
+            if (gameData == null) return;
             
+            SceneManager.LoadSceneAsync(_gameData.sceneBuildIndex);
+        }
+
+        private void LoadSceneProgress()
+        {
             // Push the loaded data to all other scripts that need it
             foreach (var dataPersistenceObject in _dataPersistenceObjects) dataPersistenceObject.LoadData(_gameData);
         }
 
         private void SaveGame()
         {
+            // _gameData ??= new GameData();
+            if (_gameData == null) return;
             foreach (var dataPersistenceObject in _dataPersistenceObjects) dataPersistenceObject.SaveData(_gameData);
             _gameData.sceneBuildIndex = SceneManager.GetActiveScene().buildIndex;
             _fileDataHandler.Save(_gameData);
@@ -97,6 +97,12 @@ namespace DataPersistence
             if (sceneTransitions.Length <= 0) return;
             foreach (var sceneTransition in sceneTransitions) sceneTransition.AddObserver(this);
         }
+        
+        private List<IDataPersistence> FindAllDataPersistenceObjects()
+        {
+            IEnumerable<IDataPersistence> dataPersistenceObjects = FindObjectsOfType<MonoBehaviour>().OfType<IDataPersistence>();
+            return new List<IDataPersistence>(dataPersistenceObjects);
+        }
 
         private void DeleteAllSaveData()
         {
@@ -112,5 +118,6 @@ namespace DataPersistence
                 fileInfo.Delete();
             }
         }
+        
     }
 }
