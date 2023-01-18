@@ -60,7 +60,8 @@ namespace DataPersistence
             // Load any saved data from a file using the data handler
             // if no data can be loaded, initialize a new game
             if (gameData == null) return;
-            
+
+            _gameData = gameData;
             SceneManager.LoadSceneAsync(_gameData.sceneBuildIndex);
         }
 
