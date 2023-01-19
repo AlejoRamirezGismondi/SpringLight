@@ -30,7 +30,7 @@ namespace Puzzle5
             _playerController.DisableMovement();
             yield return new WaitForSeconds(0.01f);
             player.transform.position = target.transform.position;
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(0.5f);
             _playerController.EnableMovement();
             ResetThinIce();
         }

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3089ae9288f54d67b459453f48140ef5, type: 3}
+  m_Name: Turnip
+  m_EditorClassIdentifier: 
+  seedSprite: {fileID: 1106401089, guid: be1fe8de3b39bc84da83835b0a9dcc93, type: 3}
+  growingSprite: {fileID: 1984882404, guid: be1fe8de3b39bc84da83835b0a9dcc93, type: 3}
+  grownSprite: {fileID: -1273428265, guid: be1fe8de3b39bc84da83835b0a9dcc93, type: 3}
+  daysToGrow: 3
+  produce: {fileID: 11400000, guid: 49e1fe099fee42940b19da2f7aa3ca40, type: 2}
+  amountOfProduce: 1
