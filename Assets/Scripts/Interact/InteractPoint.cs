@@ -21,12 +21,8 @@ namespace Interact
 
         private void OnTriggerStay2D(Collider2D col)
         {
-            interactingCollider = col.GetComponent<InteractableComponent>();
-        }
-
-        private void OnApplicationQuit()
-        {
-            //inventory.container.Clear();
+            var interactableComponent = col.GetComponent<InteractableComponent>();
+            if (interactableComponent != null) interactingCollider = interactableComponent;
         }
     }
 }
