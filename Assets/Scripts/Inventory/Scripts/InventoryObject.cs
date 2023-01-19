@@ -40,14 +40,14 @@ namespace Inventory.Scripts
 
         public void NextSelectedItem()
         {
-            if (selectedSlot < DisplayInventory.NUMBER_OF_COLUMNS - 1) selectedSlot++;
+            if (selectedSlot < MaxCapacity - 1) selectedSlot++;
             else selectedSlot = 0;
         }
 
         public void PreviousSelectedItem()
         {
             if (selectedSlot > 0) selectedSlot--;
-            else selectedSlot = DisplayInventory.NUMBER_OF_COLUMNS - 1;
+            else selectedSlot = MaxCapacity - 1;
         }
         
         public InventorySlot GetSelectedSlot()

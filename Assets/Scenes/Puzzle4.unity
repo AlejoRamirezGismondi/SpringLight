@@ -279,6 +279,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6892933360643402792, guid: 4e7a6a4ca9decb44e895387d32aea238, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6892933360987321528, guid: 4e7a6a4ca9decb44e895387d32aea238, type: 3}
       propertyPath: m_Name
       value: Canvas UI
@@ -22428,7 +22432,7 @@ PrefabInstance:
       objectReference: {fileID: 1526555864}
     - target: {fileID: 8603925923350639927, guid: 07811b9f240f32846b43dcc37898a89a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.00777133
+      value: -0.0077654826
       objectReference: {fileID: 0}
     - target: {fileID: 8603925923350639927, guid: 07811b9f240f32846b43dcc37898a89a, type: 3}
       propertyPath: m_LocalPosition.y
