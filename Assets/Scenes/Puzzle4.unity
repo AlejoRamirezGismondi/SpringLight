@@ -279,9 +279,53 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6892933360643402790, guid: 4e7a6a4ca9decb44e895387d32aea238, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892933360643402790, guid: 4e7a6a4ca9decb44e895387d32aea238, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892933360643402791, guid: 4e7a6a4ca9decb44e895387d32aea238, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892933360643402791, guid: 4e7a6a4ca9decb44e895387d32aea238, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892933360643402791, guid: 4e7a6a4ca9decb44e895387d32aea238, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892933360643402791, guid: 4e7a6a4ca9decb44e895387d32aea238, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892933360643402791, guid: 4e7a6a4ca9decb44e895387d32aea238, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892933360643402792, guid: 4e7a6a4ca9decb44e895387d32aea238, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: eb5dfdfe9fad3824a861976bb6caca80, type: 3}
+    - target: {fileID: 6892933360643402792, guid: 4e7a6a4ca9decb44e895387d32aea238, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892933360643402792, guid: 4e7a6a4ca9decb44e895387d32aea238, type: 3}
+      propertyPath: m_SortingLayer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6892933360643402792, guid: 4e7a6a4ca9decb44e895387d32aea238, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892933360643402792, guid: 4e7a6a4ca9decb44e895387d32aea238, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1671955787
       objectReference: {fileID: 0}
     - target: {fileID: 6892933360987321528, guid: 4e7a6a4ca9decb44e895387d32aea238, type: 3}
       propertyPath: m_Name
