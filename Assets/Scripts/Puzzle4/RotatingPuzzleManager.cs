@@ -7,9 +7,11 @@ namespace Puzzle4
     public class RotatingPuzzleManager : MonoBehaviour
     {
         private RotatingPuzzle[] _puzzles;
+        private Rewards _rewards;
 
         private void Awake()
         {
+            _rewards = FindObjectOfType<Rewards>();
             _puzzles = GetComponentsInChildren<RotatingPuzzle>();
             // Sort puzzles by name
             Array.Sort(_puzzles, (a, b) => String.Compare(a.name, b.name, StringComparison.Ordinal));
@@ -27,8 +29,7 @@ namespace Puzzle4
             // Check if all puzzles are upright
             foreach (var rotatingPuzzle in _puzzles)
                 if (!rotatingPuzzle.IsUpright()) solved = false;
-            if (solved)
-                Debug.Log("Puzzle solved!");
+            if (solved) _rewards.ShowRewards();
         }
     }
 }

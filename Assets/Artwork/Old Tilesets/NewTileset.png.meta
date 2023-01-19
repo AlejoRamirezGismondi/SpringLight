@@ -69,7 +69,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -25159,14 +25159,14 @@ TextureImporter:
       NewTileset_873: 1497188756
       NewTileset_200: 1606675586
       NewTileset_930: 497342031
-      NewTileset_71: 769138253
-      NewTileset_127: -237287909
+      NewTileset_502: 1304734994
       NewTileset_1008: 197896205
+      NewTileset_127: -237287909
       NewTileset_817: 1946376753
       NewTileset_993: -1176616710
       NewTileset_1040: -1113420794
       NewTileset_402: -891403959
-      NewTileset_502: 1304734994
+      NewTileset_71: 769138253
       NewTileset_743: 50177034
       NewTileset_615: 464067384
       NewTileset_500: 1665083047

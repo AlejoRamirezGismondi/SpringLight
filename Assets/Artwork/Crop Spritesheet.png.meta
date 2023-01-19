@@ -69,7 +69,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -2702,11 +2702,11 @@ TextureImporter:
       Crop Spritesheet_97: 1612267520
       Crop Spritesheet_1: -1273428265
       Crop Spritesheet_4: 814763212
-      Crop Spritesheet_74: 832947829
       Crop Spritesheet_78: 2137656216
+      Crop Spritesheet_74: 832947829
+      Crop Spritesheet_98: -1262893808
       Crop Spritesheet_32: 1217269548
       Crop Spritesheet_77: 848014866
-      Crop Spritesheet_98: -1262893808
       Crop Spritesheet_15: 2047221030
       Crop Spritesheet_117: -486887588
       Crop Spritesheet_9: 226173695
@@ -2714,8 +2714,8 @@ TextureImporter:
       Crop Spritesheet_61: 64863305
       Crop Spritesheet_89: -1529098710
       Crop Spritesheet_12: 354868280
-      Crop Spritesheet_53: 1113969535
       Crop Spritesheet_62: -1721861277
+      Crop Spritesheet_53: 1113969535
       Crop Spritesheet_81: -452403817
       Crop Spritesheet_38: -160772853
       Crop Spritesheet_65: 129323415

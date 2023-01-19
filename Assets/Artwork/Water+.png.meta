@@ -69,7 +69,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -3502,8 +3502,8 @@ TextureImporter:
       Water+_28: 1830135179
       Water+_27: 2011695628
       Water+_26: 425986170
-      Water+_79: -1563725226
       Water+_142: -280459992
+      Water+_79: -1563725226
       Water+_23: -1427411720
       Water+_25: 2080422569
       Water+_138: 1874643380

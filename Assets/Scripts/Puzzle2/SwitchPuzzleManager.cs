@@ -6,9 +6,11 @@ namespace Puzzle2
     public class SwitchPuzzleManager : MonoBehaviour
     {
         private SwitchPuzzle[] _puzzles;
+        private Rewards _rewards;
 
         private void Awake()
         {
+            _rewards = FindObjectOfType<Rewards>();
             _puzzles = GetComponentsInChildren<SwitchPuzzle>();
             // Sort puzzles by name
             Array.Sort(_puzzles, (a, b) => String.Compare(a.name, b.name, StringComparison.Ordinal));
@@ -24,7 +26,7 @@ namespace Puzzle2
         {
             var isSolved = true;
             foreach (var puzzle in _puzzles) if (!puzzle.IsActivated()) isSolved = false;
-            if (isSolved) Debug.Log("Puzzle solved!");
+            if (isSolved) _rewards.ShowRewards();
         }
     }
 }
