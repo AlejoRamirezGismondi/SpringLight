@@ -5,18 +5,18 @@ namespace Puzzle5
 {
     public class ThinIceManager : MonoBehaviour, IConditionalTeleportManager
     {
-        [SerializeField] private PlayerController playerController;
         [SerializeField] private GameObject target;
+        private PlayerController _playerController;
         private ThinIce[] _thinIceList;
 
-        private void Start()
+        private void Awake()
         {
             _thinIceList = FindObjectsOfType<ThinIce>();
+            _playerController = FindObjectOfType<PlayerController>();
         }
 
         public void PlayerHasFallen(GameObject player)
         {
-            ResetThinIce();
             StartCoroutine(Teleport(player));
         }
 
@@ -27,19 +27,20 @@ namespace Puzzle5
         
         private IEnumerator Teleport(GameObject player)
         {
-            playerController.DisableMovement();
+            _playerController.DisableMovement();
             yield return new WaitForSeconds(0.01f);
             player.transform.position = target.transform.position;
             yield return new WaitForSeconds(0.01f);
-            playerController.EnableMovement();
+            _playerController.EnableMovement();
+            ResetThinIce();
         }
 
-        public bool CanTeleport()
+        public bool CheckWinConditions()
         {
-            bool canTeleport = true;
+            bool playerWon = true;
             foreach (var thinIce in _thinIceList)
-                if (!thinIce.IsConsumed()) canTeleport = false;
-            return canTeleport;
+                if (!thinIce.IsConsumed()) playerWon = false;
+            return playerWon;
         }
 
         public void FailTeleported()

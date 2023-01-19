@@ -6,12 +6,13 @@ namespace Puzzle5
     {
         private bool _consumed;
         private SpriteRenderer _spriteRenderer;
-        [SerializeField] private ThinIceManager manager;
-    
-        void Awake()
+        private ThinIceManager _manager;
+
+        private void Awake()
         {
             _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-            manager = gameObject.GetComponentInParent<ThinIceManager>();
+            _manager = gameObject.GetComponentInParent<ThinIceManager>();
+            _manager = FindObjectOfType<ThinIceManager>();
         }
 
         private void Start()
@@ -26,7 +27,7 @@ namespace Puzzle5
 
         public void OnTriggerEnter2D(Collider2D col)
         {
-            if (col.CompareTag("Player") && _consumed) manager.PlayerHasFallen(col.gameObject);
+            if (col.CompareTag("Player") && _consumed) _manager.PlayerHasFallen(col.gameObject);
         }
 
         private void Consume()
