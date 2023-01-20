@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Linq;
 using UnityEngine;
 
@@ -19,27 +18,21 @@ public class ConditionalTeleporter : MonoBehaviour
     {
         if (!col.CompareTag("Player")) return;
         if (target != null && _playerController != null && failTarget != null && _manager != null)
-            StartCoroutine(Teleport(col));
+        {
+            if (_manager.CheckWinConditions())
+            {
+                StartCoroutine(Teleporter.Teleport(_playerController, target.transform.position));
+                _manager.SuccessTeleported();
+            }
+            else
+            {
+                StartCoroutine(Teleporter.Teleport(_playerController, failTarget.transform.position));
+                _manager.FailTeleported();
+            }
+            
+        }
         else
             Debug.LogError("Not all fields are set to the ConditionalTeleporter");
-    }
-    
-    private IEnumerator Teleport(Collider2D player)
-    {
-        _playerController.DisableMovement();
-        yield return new WaitForSeconds(0.01f);
-        if (_manager.CheckWinConditions())
-        {
-            player.transform.position = target.transform.position;
-            _manager.SuccessTeleported();
-        }
-        else
-        {
-            player.transform.position = failTarget.transform.position;
-            _manager.FailTeleported();
-        }
-        yield return new WaitForSeconds(0.01f);
-        _playerController.EnableMovement();
     }
 }
 

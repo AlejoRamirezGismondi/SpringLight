@@ -15,17 +15,17 @@ public class Teleporter : MonoBehaviour
     {
         if (!col.CompareTag("Player")) return;
         if (target != null && _playerController != null)
-            StartCoroutine(Teleport(col));
+            StartCoroutine(Teleport(_playerController, target.transform.position));
         else
             Debug.LogError("No target or player controller assigned to teleporter");
     }
 
-    private IEnumerator Teleport(Collider2D player)
+    public static IEnumerator Teleport(PlayerController player, Vector3 target)
     {
-        _playerController.DisableMovement();
+        player.DisableMovement();
         yield return new WaitForSeconds(0.01f);
-        player.transform.position = target.transform.position;
+        player.transform.position = target;
         yield return new WaitForSeconds(0.01f);
-        _playerController.EnableMovement();
+        player.EnableMovement();
     }
 }

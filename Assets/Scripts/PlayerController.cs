@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
 
     private bool _isMoving;
-    private bool MovementEnabled = true;
+    private bool _movementEnabled = true;
 
     private bool _wasMovingInX;
     private Vector2 _input;
@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     private InventoryComponent _inventory;
     private static readonly int MoveX = Animator.StringToHash("moveX");
     private static readonly int MoveY = Animator.StringToHash("moveY");
-    private static readonly int isMoving = Animator.StringToHash("isMoving");
+    private static readonly int IsMoving = Animator.StringToHash("isMoving");
 
     private void Start()
     {
@@ -29,10 +29,19 @@ public class PlayerController : MonoBehaviour
         interactPoint = GameObject.FindGameObjectsWithTag("InteractPoint")[0];
         _interactTarget = interactPoint.GetComponent<InteractPoint>();
         _inventory = GetComponentInChildren<InventoryComponent>();
+        StartCoroutine(StartMovement());
+    }
+    
+    private IEnumerator StartMovement()
+    {
+        DisableMovement();
+        yield return new WaitForSeconds(0.5f);
+        EnableMovement();
     }
 
     private void Update()
     {
+        if (!_movementEnabled) return;
         if (Input.GetKeyDown(KeyCode.E)) _interactTarget.Interact();
         CheckForScrollWheel();
         if (_isMoving) return;
@@ -41,7 +50,7 @@ public class PlayerController : MonoBehaviour
 
         if (_input == Vector2.zero)
         {
-            anim.SetBool(isMoving, false);
+            anim.SetBool(IsMoving, false);
             return;
         }
         
@@ -74,10 +83,10 @@ public class PlayerController : MonoBehaviour
     private IEnumerator Move(Vector3 targetPos)
     {
         _isMoving = true;
-        anim.SetBool(isMoving, true);
+        anim.SetBool(IsMoving, true);
         AnimateMovement();
 
-        while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon && MovementEnabled)
+        while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
             yield return null;
@@ -90,12 +99,12 @@ public class PlayerController : MonoBehaviour
 
     public void EnableMovement()
     {
-        MovementEnabled = true;
+        _movementEnabled = true;
     }
     
     public void DisableMovement()
     {
-        MovementEnabled = false;
+        _movementEnabled = false;
     }
 
     private void AnimateMovement()

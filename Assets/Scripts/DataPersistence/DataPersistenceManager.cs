@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using DataPersistence.Data;
+using SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -50,7 +51,7 @@ namespace DataPersistence
         public void NewGame()
         {
             Instance._gameData = new GameData();
-            SceneManager.LoadSceneAsync(_gameData.sceneBuildIndex);
+            SceneManager.LoadSceneAsync(_gameData.lastSceneBuildIndex);
         }
 
         public void LoadGame()
@@ -62,11 +63,12 @@ namespace DataPersistence
             if (gameData == null) return;
 
             _gameData = gameData;
-            SceneManager.LoadSceneAsync(_gameData.sceneBuildIndex);
+            SceneManager.LoadSceneAsync(_gameData.lastSceneBuildIndex);
         }
 
         private void LoadSceneProgress()
         {
+            if (_gameData == null) return;
             // Push the loaded data to all other scripts that need it
             foreach (var dataPersistenceObject in _dataPersistenceObjects) dataPersistenceObject.LoadData(_gameData);
         }
@@ -76,7 +78,7 @@ namespace DataPersistence
             // _gameData ??= new GameData();
             if (_gameData == null) return;
             foreach (var dataPersistenceObject in _dataPersistenceObjects) dataPersistenceObject.SaveData(_gameData);
-            _gameData.sceneBuildIndex = SceneManager.GetActiveScene().buildIndex;
+            _gameData.lastSceneBuildIndex = SceneManager.GetActiveScene().buildIndex;
             _fileDataHandler.Save(_gameData);
         }
 
