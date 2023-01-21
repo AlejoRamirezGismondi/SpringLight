@@ -23,9 +23,9 @@ public class Teleporter : MonoBehaviour
     public static IEnumerator Teleport(PlayerController player, Vector3 target)
     {
         player.DisableMovement();
-        yield return new WaitForSeconds(0.01f);
+        yield return new WaitForSeconds(0.05f);
         player.transform.position = target;
-        yield return new WaitForSeconds(0.01f);
+        yield return new WaitForSeconds(0.05f);
         player.EnableMovement();
     }
 }

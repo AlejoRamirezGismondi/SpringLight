@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
         anim.SetBool(IsMoving, true);
         AnimateMovement();
 
-        while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon)
+        while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon && _movementEnabled)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
             yield return null;
