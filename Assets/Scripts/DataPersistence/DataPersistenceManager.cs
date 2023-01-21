@@ -75,7 +75,6 @@ namespace DataPersistence
 
         private void SaveGame()
         {
-            // _gameData ??= new GameData();
             if (_gameData == null) return;
             foreach (var dataPersistenceObject in _dataPersistenceObjects) dataPersistenceObject.SaveData(_gameData);
             _gameData.lastSceneBuildIndex = SceneManager.GetActiveScene().buildIndex;
@@ -121,6 +120,5 @@ namespace DataPersistence
                 fileInfo.Delete();
             }
         }
-        
     }
 }

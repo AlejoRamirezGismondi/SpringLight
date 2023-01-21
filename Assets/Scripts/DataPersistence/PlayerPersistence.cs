@@ -1,5 +1,6 @@
 ﻿using DataPersistence.Data;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace DataPersistence
 {
@@ -7,7 +8,8 @@ namespace DataPersistence
     {
         public void LoadData(GameData data)
         {
-            transform.position = new Vector3(data.playerPosition[0], data.playerPosition[1], data.playerPosition[2]);
+            if (data.lastSceneBuildIndex == SceneManager.GetActiveScene().buildIndex)
+                transform.position = new Vector3(data.playerPosition[0], data.playerPosition[1], data.playerPosition[2]);
         }
 
         public void SaveData(GameData data)

@@ -4,9 +4,14 @@ namespace UI
 {
     public class Menu : MonoBehaviour
     {
-        public void Start()
+        private void Start()
         {
             Close();
+        }
+
+        public void Toggle()
+        {
+            if (gameObject.activeSelf) Close();else Open();
         }
 
         public void Open()
