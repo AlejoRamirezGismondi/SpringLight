@@ -63,7 +63,7 @@ namespace DataPersistence
             if (gameData == null) return;
 
             _gameData = gameData;
-            SceneManager.LoadSceneAsync(_gameData.lastSceneBuildIndex);
+            SceneManager.LoadSceneAsync(_gameData.lastSceneBuildIndex == 0 ? 1 : _gameData.lastSceneBuildIndex);
         }
 
         private void LoadSceneProgress()

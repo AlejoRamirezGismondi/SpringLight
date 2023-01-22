@@ -2,6 +2,7 @@
 using System.IO;
 using Crops.Scripts;
 using DataPersistence.Data;
+using Inventory.Scripts;
 using Items.Scripts;
 using Newtonsoft.Json;
 using UnityEngine;
@@ -18,15 +19,10 @@ namespace DataPersistence
             _fullpath = Path.Combine(dataDirPath, dataFileName);
             _settings = new JsonSerializerSettings
             {
-                TypeNameHandling = TypeNameHandling.Auto,
-                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                TypeNameHandling = TypeNameHandling.All,
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
             };
-            _settings.Converters.Add(new ScriptableObjectConverter<EmptyObject>(""));
-            _settings.Converters.Add(new ScriptableObjectConverter<ProduceObject>("Produce"));
-            _settings.Converters.Add(new ScriptableObjectConverter<SeedObject>("Seeds"));
-            _settings.Converters.Add(new ScriptableObjectConverter<ToolObject>("Tools"));
-            _settings.Converters.Add(new ScriptableObjectConverter<WaterCanToolObject>("Tools"));
-            _settings.Converters.Add(new ScriptableObjectConverter<CropObject>("Crops"));
+            foreach (var gameJsonConverter in CustomConverters.GetGameJsonConverters()) _settings.Converters.Add(gameJsonConverter);
         }
         
         public void Save(GameData data)
@@ -35,6 +31,8 @@ namespace DataPersistence
             {
                 Directory.CreateDirectory(Path.GetDirectoryName(_fullpath));
                 string json = JsonConvert.SerializeObject(data, Formatting.Indented, _settings);
+                
+                Debug.Log(json);
 
                 using FileStream stream = new FileStream(_fullpath, FileMode.Create);
                 using StreamWriter writer = new StreamWriter(stream);

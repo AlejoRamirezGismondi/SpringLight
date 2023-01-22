@@ -1,10 +1,12 @@
-﻿using Items;
+﻿using DataPersistence;
+using DataPersistence.Data;
+using Items;
 using Items.Scripts;
 using UnityEngine;
 
 namespace Inventory.Scripts
 {
-    public class InventoryComponent : MonoBehaviour
+    public class InventoryComponent : MonoBehaviour, IDataPersistence
     {
         [SerializeField] private InventoryObject inventory;
         private DisplayInventory _displayInventory;
@@ -12,6 +14,9 @@ namespace Inventory.Scripts
         private void Awake()
         {
             _displayInventory = FindObjectOfType<DisplayInventory>();
+            // This resets the inventory to be empty in case the Scriptable Object suffers problems with the data
+            if (inventory.container.Count > 0) return;
+            for (int i = 0; i < inventory.MaxCapacity; i++) inventory.container.Insert(i, new InventorySlot(EmptyObject.emptyObject, 1));
         }
 
         public void AddItem(Item item)
@@ -47,6 +52,16 @@ namespace Inventory.Scripts
         {
             inventory.RemoveSelectedItem(amount);
             _displayInventory.UpdateDisplay();
+        }
+
+        public void LoadData(GameData data)
+        {
+            if (data.inventory.Count > 0) inventory.container = data.inventory; // Check in case of new game
+        }
+
+        public void SaveData(GameData data)
+        {
+            data.inventory = inventory.container;
         }
     }
 }

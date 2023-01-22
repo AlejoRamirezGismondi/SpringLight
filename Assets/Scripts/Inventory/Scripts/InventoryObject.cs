@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Items.Scripts;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace Inventory.Scripts
@@ -10,11 +11,12 @@ namespace Inventory.Scripts
     {
         public List<InventorySlot> container = new();
         public int selectedSlot;
-        private const int MaxCapacity = 9;
+        public readonly int MaxCapacity = 9;
         
+        // I believe this is only triggered when the Scriptable Object is first created, not on the regular Monobehabior Awake method
         public void Awake()
         {
-            if (container.Count != 0) return;
+            if (container.Count > 0) return;
             for (int i = 0; i < MaxCapacity; i++) container.Insert(i, new InventorySlot(EmptyObject.emptyObject, 1));
         }
 
@@ -63,6 +65,7 @@ namespace Inventory.Scripts
     }
     
     [Serializable]
+    [JsonObject(MemberSerialization.Fields)]
     public class InventorySlot
     {
         public ItemObject itemObject;

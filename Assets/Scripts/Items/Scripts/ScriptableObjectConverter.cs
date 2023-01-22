@@ -1,5 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using UnityEngine;
 
 namespace Items.Scripts
@@ -15,14 +16,21 @@ namespace Items.Scripts
 
         public override void WriteJson(JsonWriter writer, T value, JsonSerializer serializer)
         {
-            writer.WriteValue(value.name);
+            JObject jo = new JObject
+            {
+                { "name", value.name },
+                { "type", typeof(T).FullName }
+            };
+            jo.WriteTo(writer);
         }
 
         public override T ReadJson(JsonReader reader, Type objectType, T existingValue, bool hasExistingValue,
             JsonSerializer serializer)
         {
             var path = _folderPath != "" ? _folderPath + "/" : "";
-            return Resources.Load<T>(path + reader.Value);
+            var jo = JObject.Load(reader);
+            var name = jo["name"].Value<string>();
+            return Resources.Load<T>(path + name);
         }
     }
 }
