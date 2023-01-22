@@ -15,6 +15,6 @@ MonoBehaviour:
   seedSprite: {fileID: -1727710920, guid: be1fe8de3b39bc84da83835b0a9dcc93, type: 3}
   growingSprite: {fileID: -913314348, guid: be1fe8de3b39bc84da83835b0a9dcc93, type: 3}
   grownSprite: {fileID: 1033229152, guid: be1fe8de3b39bc84da83835b0a9dcc93, type: 3}
-  daysToGrow: 5
+  daysToGrow: 3
   produce: {fileID: 11400000, guid: 57eb6f5acdd0f27448c75df4c26c5451, type: 2}
   amountOfProduce: 2
