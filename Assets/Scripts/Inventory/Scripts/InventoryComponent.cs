@@ -56,12 +56,24 @@ namespace Inventory.Scripts
 
         public void LoadData(GameData data)
         {
+            // Load all of the inventory data
             if (data.inventory.Count > 0) inventory.container = data.inventory; // Check in case of new game
+            
+            // Load the water can level
+            foreach (var inventorySlot in inventory.container)
+                if (inventorySlot.itemObject is WaterCanToolObject waterCan)
+                    waterCan.waterAmount = data.waterCanAmount;
         }
 
         public void SaveData(GameData data)
         {
+            // Save all of the inventory data
             data.inventory = inventory.container;
+            
+            // Save the water can level
+            foreach (var inventorySlot in inventory.container)
+                if (inventorySlot.itemObject is WaterCanToolObject waterCan)
+                    data.waterCanAmount = waterCan.waterAmount;
         }
     }
 }

@@ -31,8 +31,6 @@ namespace DataPersistence
             {
                 Directory.CreateDirectory(Path.GetDirectoryName(_fullpath));
                 string json = JsonConvert.SerializeObject(data, Formatting.Indented, _settings);
-                
-                Debug.Log(json);
 
                 using FileStream stream = new FileStream(_fullpath, FileMode.Create);
                 using StreamWriter writer = new StreamWriter(stream);
