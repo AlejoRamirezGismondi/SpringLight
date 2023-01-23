@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Items.Scripts;
 using Newtonsoft.Json;
 using UnityEngine;
@@ -23,13 +24,10 @@ namespace Inventory.Scripts
         public void AddItem(ItemObject itemObject, int amount)
         {
             bool hasItem = false;
-            foreach (var slot in container)
+            foreach (var slot in container.Where(slot => slot.itemObject == itemObject))
             {
-                if (slot.itemObject == itemObject)
-                {
-                    slot.amount += amount;
-                    hasItem = true;
-                }
+                slot.amount += amount;
+                hasItem = true;
             }
 
             if (!hasItem)
