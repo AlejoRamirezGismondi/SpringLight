@@ -32,6 +32,11 @@ namespace UI
             UpdateText();
         }
 
+        public bool CanBuy(int n)
+        {
+            return coins >= n;
+        }
+
         public void LoadData(GameData data)
         {
             coins = data.coins;
