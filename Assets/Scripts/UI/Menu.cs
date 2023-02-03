@@ -25,5 +25,11 @@ namespace UI
             gameObject.SetActive(false);
             PauseManager.Resume();
         }
+        
+        public void SwitchTab(int tabNumber)
+        {
+            for (int i = 1; i < transform.childCount; i++)
+                transform.GetChild(i).gameObject.SetActive(i == tabNumber);
+        }
     }
 }
