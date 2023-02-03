@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using Crops;
 using Inventory.Scripts;
-using Items.Scripts;
 
 namespace DataPersistence.Data
 {
@@ -14,7 +13,8 @@ namespace DataPersistence.Data
         public int coins; // Saved in the CoinCounter
         public List<CropTileData> CropTileDataList; // Saved in the CropTileManager
         public List<InventorySlot> inventory; // Saved in the InventoryComponent
-        public int waterCanAmount; // Saved in the 
+        public int waterCanAmount; // Saved in the inventory component
+        public bool[] shopItemsBought; // Saved in the ShopPersistence
 
         public GameData()
         {
@@ -24,6 +24,7 @@ namespace DataPersistence.Data
             CropTileDataList = new List<CropTileData>();
             inventory = new List<InventorySlot>();
             waterCanAmount = 5; // 5 is the max water when the game begins
+            shopItemsBought = Array.Empty<bool>(); // Marks the items that have been bought in the shop
         }
     }
 }

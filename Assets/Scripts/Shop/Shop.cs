@@ -29,6 +29,7 @@ namespace Shop
                 _coinCounter.SubstractCoins(shopItem.price);
                 _inventory.AddItem(shopItem.item, shopItem.amount);
                 shopItem.gameObject.SetActive(false);
+                shopItem.bought = true;
             }
             else
             {

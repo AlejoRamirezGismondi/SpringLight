@@ -11,6 +11,7 @@ namespace Shop
         public ItemObject item;
         public int amount;
         public int price;
+        public bool bought;
         
         public Image icon;
         public TextMeshProUGUI amountText;
@@ -19,7 +20,7 @@ namespace Shop
 
         private void Awake()
         {
-            _shop = FindObjectOfType<Shop>();
+            _shop = FindObjectOfType<Shop>(true);
         }
 
         private void Start()
