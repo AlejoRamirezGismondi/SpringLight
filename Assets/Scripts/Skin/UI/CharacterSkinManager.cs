@@ -1,6 +1,6 @@
-using System;
 using UnityEngine;
 using UnityEngine.U2D.Animation;
+using UnityEngine.UI;
 
 namespace Skin.UI
 {
@@ -19,6 +19,18 @@ namespace Skin.UI
         void Start()
         {
             LoadAllSpriteLibraryAssets();
+            foreach (var button in FindObjectsOfType<Button>(true))
+            {
+                switch (button.name)
+                {
+                    case "Next":
+                        button.onClick.AddListener(Next);
+                        break;
+                    case "Previous":
+                        button.onClick.AddListener(Previous);
+                        break;
+                }
+            }
         }
 
         public void Next()
