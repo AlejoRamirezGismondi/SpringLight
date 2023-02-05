@@ -25209,6 +25209,10 @@ PrefabInstance:
       propertyPath: amount
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6892933360728069244, guid: 4e7a6a4ca9decb44e895387d32aea238, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6892933360987321528, guid: 4e7a6a4ca9decb44e895387d32aea238, type: 3}
       propertyPath: m_Name
       value: Canvas UI
@@ -25301,6 +25305,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6892933360991554821, guid: 4e7a6a4ca9decb44e895387d32aea238, type: 3}
+      propertyPath: m_Name
+      value: CodeInputField
+      objectReference: {fileID: 0}
     - target: {fileID: 6892933361014810223, guid: 4e7a6a4ca9decb44e895387d32aea238, type: 3}
       propertyPath: spriteRenderer
       value: 
@@ -25321,6 +25329,10 @@ PrefabInstance:
       propertyPath: spriteRenderer
       value: 
       objectReference: {fileID: 1354989896}
+    - target: {fileID: 6892933362330111435, guid: 4e7a6a4ca9decb44e895387d32aea238, type: 3}
+      propertyPath: water
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 8366126422021075497, guid: 4e7a6a4ca9decb44e895387d32aea238, type: 3}
       propertyPath: item
       value: 
@@ -25566,7 +25578,7 @@ PrefabInstance:
       objectReference: {fileID: 239914542}
     - target: {fileID: 8603925923350639927, guid: e218a84a305f90c4a8003f29e887e064, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.005848452
+      value: -0.0058554513
       objectReference: {fileID: 0}
     - target: {fileID: 8603925923350639927, guid: e218a84a305f90c4a8003f29e887e064, type: 3}
       propertyPath: m_LocalPosition.y

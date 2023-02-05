@@ -1,16 +1,19 @@
 using System.Collections.Generic;
+using UnityEngine.U2D.Animation;
 
 namespace Skin
 {
     public class SkinRegister
     {
-        public string Name;
-        public string Code;
+        public readonly SpriteLibraryAsset SpriteLibraryAsset;
+        public readonly string Name;
+        public readonly string Code;
 
-        public SkinRegister(string name, string code)
+        public SkinRegister(SpriteLibraryAsset spriteLibraryAsset, string name, string code)
         {
-            this.Code = code;
-            this.Name = name;
+            SpriteLibraryAsset = spriteLibraryAsset;
+            Code = code;
+            Name = name;
         }
     }
 
@@ -18,10 +21,10 @@ namespace Skin
     {
         private static readonly List<SkinRegister> SkinRegisters = new();
 
-        public static void AddSkin(string name, string code)
+        public static void AddSkin(SpriteLibraryAsset spriteLibraryAsset, string name, string code)
         {
             if (Contains(code)) SkinRegisters.RemoveAll(rs => rs.Code.Equals(code));
-            SkinRegisters.Add(new SkinRegister(name, code));
+            SkinRegisters.Add(new SkinRegister(spriteLibraryAsset, name, code));
         }
 
         public static bool Contains(string code)
@@ -31,8 +34,22 @@ namespace Skin
 
         public static string GetSkinName(string code)
         {
-            if (Contains(code)) return SkinRegisters.Find(sr => sr.Code.Equals(code)).Name;
-            return "";
+            return Contains(code) ? SkinRegisters.Find(sr => sr.Code.Equals(code)).Name : "";
+        }
+        
+        public static string GetCodeForName(string name)
+        {
+            return Contains(name) ? SkinRegisters.Find(sr => sr.Name.Equals(name)).Code : "";
+        }
+
+        public static void DeleteSkin(string code)
+        {
+            if (Contains(code)) SkinRegisters.RemoveAll(sr => sr.Code.Equals(code));
+        }
+        
+        public static SpriteLibraryAsset[] GetSpriteLibraryAssets()
+        {
+            return SkinRegisters.ConvertAll(sr => sr.SpriteLibraryAsset).ToArray();
         }
     }
 }

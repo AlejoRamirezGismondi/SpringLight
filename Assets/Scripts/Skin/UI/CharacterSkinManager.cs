@@ -1,9 +1,14 @@
+using System;
 using UnityEngine;
 using UnityEngine.U2D.Animation;
 using UnityEngine.UI;
 
 namespace Skin.UI
 {
+    /*
+     * This class is responsible for managing the character skins.
+     * It loads all the skins from the Resources folder and allows the user to switch between them.
+     */
     public class CharacterSkinManager : MonoBehaviour
     {
         private SpriteLibrary _spriteLibrary;
@@ -33,14 +38,14 @@ namespace Skin.UI
             }
         }
 
-        public void Next()
+        private void Next()
         {
             _currentSkinNumber++;
             if (_currentSkinNumber >= _skins.Length) _currentSkinNumber = 0;
             RefreshSkin();
         }
 
-        public void Previous()
+        private void Previous()
         {
             _currentSkinNumber--;
             if (_currentSkinNumber < 0) _currentSkinNumber = _skins.Length - 1;
@@ -77,7 +82,11 @@ namespace Skin.UI
 
         private void LoadAllSpriteLibraryAssets()
         {
-            _skins = Resources.LoadAll<SpriteLibraryAsset>("Sprite_Libraries");
+            var spriteLibs = SkinRegistry.GetSpriteLibraryAssets();
+            var defaultSkins = Resources.LoadAll<SpriteLibraryAsset>("Sprite_Libraries");
+            _skins = new SpriteLibraryAsset[spriteLibs.Length + defaultSkins.Length];
+            Array.Copy(spriteLibs, _skins, spriteLibs.Length);
+            Array.Copy(defaultSkins, 0, _skins, spriteLibs.Length, defaultSkins.Length);
             if (_currentSkinNumber > _skins.Length) _currentSkinNumber = _skins.Length - 1;
             RefreshSkin();
         }

@@ -1,21 +1,22 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Skin.UI
 {
     public class SkinPreview : MonoBehaviour
     {
-        [SerializeField] private SpriteRenderer spriteRenderer;
-        private SpriteRenderer _mySpriteRenderer;
+        private SpriteRenderer spriteRenderer;
+        private Image myImage;
 
-        // Start is called before the first frame update
-        void Start()
+        private void Awake()
         {
-            _mySpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+            spriteRenderer = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<SpriteRenderer>();
+            myImage = gameObject.GetComponent<Image>();
         }
-    
+
         private void ChangeSprite()
         {
-            _mySpriteRenderer.sprite = spriteRenderer.sprite; 
+            myImage.sprite = spriteRenderer.sprite;
         }
 
         // Update is called once per frame

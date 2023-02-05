@@ -1,9 +1,17 @@
-using System.Collections.Generic;
 using Skin.UI;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Skin
 {
+    /**
+     * This class is responsible for the UI of the skin manager
+     * It is responsible for the following:
+     * - Refreshing the current skin
+     * - Getting a new skin
+     * - Reading the code from the input field
+     */
     public class SkinManager : MonoBehaviour
     {
         private string _code = "";
@@ -15,24 +23,39 @@ namespace Skin
         {
             _networkManager = gameObject.GetComponent<NetworkManager>();
             _characterSkinManager = GameObject.Find("CharacterSkinManager").GetComponent<CharacterSkinManager>();
+            foreach (var button in FindObjectsOfType<Button>(true))
+            {
+                switch (button.name)
+                {
+                    case "Refresh":
+                        button.onClick.AddListener(RefreshSkin);
+                        break;
+                    case "EnterCode":
+                        button.onClick.AddListener(EnterCode);
+                        break;
+                }
+            }
+
+            var findObjectOfType = FindObjectOfType<TMP_InputField>(true);
+            findObjectOfType.onValueChanged.AddListener(ReadStringCodeInput);
         }
 
-        public void ReadStringCodeInput(string s)
+        private void ReadStringCodeInput(string s)
         {
             _code = s;
         }
 
-        public void EnterCode()
+        private void EnterCode()
         {
             if (SkinRegistry.Contains(_code)) RefreshSkin(SkinRegistry.GetSkinName(_code));
             else GetSkin();
         }
 
-        public void RefreshSkin()
+        private void RefreshSkin()
         {
             string currentName = _characterSkinManager.GetCurrentSkinName();
             if (currentName.Equals("Character 1") || currentName.Equals("Character")) return;
-            RefreshSkin(currentName);
+            RefreshSkin(SkinRegistry.GetCodeForName(currentName));
         }
 
         private void GetSkin()
@@ -40,19 +63,16 @@ namespace Skin
             if (_code.Length > 0) _networkManager.GetSprite(_code);
         }
 
-        private void RefreshSkin(string name)
+        private void GetSkin(string code)
         {
-            List<string> failed = new List<string>();
-            // AssetDatabase.DeleteAssets(new[] { $"Assets/Artwork/Character/Resources/{name}" }, failed);
-            // AssetDatabase.DeleteAsset($"Assets/Artwork/Character/Resources/Sprite_Libraries/{name}");
-            if (failed.Count <= 0) GetSkin();
-            else
-            {
-                foreach (var err in failed)
-                {
-                    Debug.Log(err);
-                }
-            }
+            if (code.Length > 0) _networkManager.GetSprite(code);
+        }
+
+        private void RefreshSkin(string code)
+        {
+            if (code == "") return;
+            SkinRegistry.DeleteSkin(code);
+            GetSkin(code);
         }
     }
 }

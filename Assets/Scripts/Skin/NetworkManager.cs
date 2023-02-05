@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using Skin.UI;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -23,10 +24,12 @@ namespace Skin
     {
         [SerializeField] private string uri = "http://localhost:8080/sprites/";
         [SerializeField] private List<NetworkErrorHandler> errorHandlers;
+        private CharacterSkinManager characterSkinManager;
         private SpriteLibraryGenerator _spriteLibraryGenerator;
 
-        private void Start()
+        private void Awake()
         {
+            characterSkinManager = FindObjectOfType<CharacterSkinManager>();
             _spriteLibraryGenerator = gameObject.GetComponent<SpriteLibraryGenerator>();
         }
 
@@ -48,10 +51,10 @@ namespace Skin
             }
 
             var deserializedGetData = JsonUtility.FromJson<SpriteDto>(getRequest.downloadHandler.text);
-
-            SpriteSaver.SaveSprite(deserializedGetData);
-            _spriteLibraryGenerator.GenerateSpriteLibrary(deserializedGetData.name);
-            SkinRegistry.AddSkin(deserializedGetData.name, id);
+            
+            var spriteLibraryAsset = _spriteLibraryGenerator.GenerateSpriteLibrary(deserializedGetData);
+            SkinRegistry.AddSkin(spriteLibraryAsset, deserializedGetData.name, id);
+            characterSkinManager.RefreshSpriteLibraryAssets();
             // Trigger continuation of game flow
         }
 
