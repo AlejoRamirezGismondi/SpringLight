@@ -32,14 +32,14 @@ namespace Skin
             return SkinRegisters.Exists(sr => sr.Code.Equals(code));
         }
 
-        public static string GetSkinName(string code)
+        public static bool ContainsName(string name)
         {
-            return Contains(code) ? SkinRegisters.Find(sr => sr.Code.Equals(code)).Name : "";
+            return SkinRegisters.Exists(sr => sr.Name.Equals(name));
         }
-        
+
         public static string GetCodeForName(string name)
         {
-            return Contains(name) ? SkinRegisters.Find(sr => sr.Name.Equals(name)).Code : "";
+            return ContainsName(name) ? SkinRegisters.Find(sr => sr.Name.Equals(name)).Code : "";
         }
 
         public static void DeleteSkin(string code)

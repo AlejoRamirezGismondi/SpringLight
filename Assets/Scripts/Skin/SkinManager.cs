@@ -47,8 +47,8 @@ namespace Skin
 
         private void EnterCode()
         {
-            if (SkinRegistry.Contains(_code)) RefreshSkin(SkinRegistry.GetSkinName(_code));
-            else GetSkin();
+            if (SkinRegistry.Contains(_code)) RefreshSkin(_code);
+            else GetSkin(_code);
         }
 
         private void RefreshSkin()
@@ -56,11 +56,6 @@ namespace Skin
             string currentName = _characterSkinManager.GetCurrentSkinName();
             if (currentName.Equals("Character 1") || currentName.Equals("Character")) return;
             RefreshSkin(SkinRegistry.GetCodeForName(currentName));
-        }
-
-        private void GetSkin()
-        {
-            if (_code.Length > 0) _networkManager.GetSprite(_code);
         }
 
         private void GetSkin(string code)

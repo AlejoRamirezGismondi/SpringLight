@@ -12,6 +12,7 @@ namespace Skin
             Sprite[] sprites = LoadSprites(dto);
 
             var spriteLib = ScriptableObject.CreateInstance<SpriteLibraryAsset>();
+            spriteLib.name = dto.name;
 
             spriteLib.AddCategoryLabel(sprites[0], "Idle_Down", "0");
             spriteLib.AddCategoryLabel(sprites[4], "Idle_Up", "4");
