@@ -1,0 +1,7 @@
+{
+	"name": "Scripts",
+	"references": [
+		"Unity.2D.Animation.Runtime",
+		"Unity.TextMeshPro"
+	]
+}
