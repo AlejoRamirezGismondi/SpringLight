@@ -5,7 +5,7 @@ public class Rewards : MonoBehaviour
 {
     private Item[] _rewards;
 
-    private void Awake()
+    public void Awake()
     {
         _rewards = GetComponentsInChildren<Item>();
     }
