@@ -1,0 +1,4 @@
+﻿[title=cutscene1_start]
+A mysterious broken pillar lies scattered on the ground.
+Its once grand stature now marred by cracks and missing pieces, leaving behind a sense of unanswered questions and a hint of untold secrets.
+[title=cutscene1_end]

@@ -1,0 +1,4 @@
+﻿[title=cutscene1_start]
+There seems to be a pipe going through the wall.
+What purpose does it serve?
+[title=cutscene1_end]

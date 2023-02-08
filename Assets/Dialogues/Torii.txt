@@ -1,0 +1,6 @@
+﻿[title=start]
+At the bottom of a set of stairs stands a striking red Torii gate, marking the entrance to a sacred shrine.
+[title=end]
+[title=back-start]
+This gate marks the end of the trail from the woods.
+[title=back-end]

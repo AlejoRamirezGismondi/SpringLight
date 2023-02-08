@@ -1,0 +1,3 @@
+﻿[title=cutscene1_start]
+This cave seems to be cold enough for icicles to form
+[title=cutscene1_end]
