@@ -18012,6 +18012,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Turnip Seeds (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6898767593960228946, guid: 3aaf69ea60ad1f04fb092a698ffe4503, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6898767593960228946, guid: 3aaf69ea60ad1f04fb092a698ffe4503, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6898767593960228946, guid: 3aaf69ea60ad1f04fb092a698ffe4503, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3aaf69ea60ad1f04fb092a698ffe4503, type: 3}
 --- !u!224 &1081962494 stripped
