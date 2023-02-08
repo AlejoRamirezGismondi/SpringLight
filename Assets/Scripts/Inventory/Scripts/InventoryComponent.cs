@@ -42,6 +42,12 @@ namespace Inventory.Scripts
             inventory.PreviousSelectedItem();
             _displayInventory.UpdateDisplay();
         }
+        
+        public void SelectSlot(int slot)
+        {
+            inventory.SelectSlot(slot);
+            _displayInventory.UpdateDisplay();
+        }
 
         public InventorySlot GetSelectedSlot()
         {

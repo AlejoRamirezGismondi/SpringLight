@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
         if (!_movementEnabled) return;
         if (Input.GetKeyDown(KeyCode.E)) _interactTarget.Interact();
         CheckForScrollWheel();
+        CheckForNumbers();
         if (_isMoving) return;
         _input.x = Input.GetAxisRaw("Horizontal");
         _input.y = Input.GetAxisRaw("Vertical");
@@ -123,6 +124,47 @@ public class PlayerController : MonoBehaviour
         else if (Input.mouseScrollDelta.y > 0)
         {
             _inventory.PreviousSelectedItem();
+        }
+    }
+
+    // This method checks if any numbers from 1 to 9 are pressed and calls the InventoryComponent's method to change the selected item
+    private void CheckForNumbers()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            _inventory.SelectSlot(0);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            _inventory.SelectSlot(1);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            _inventory.SelectSlot(2);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            _inventory.SelectSlot(3);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            _inventory.SelectSlot(4);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            _inventory.SelectSlot(5);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            _inventory.SelectSlot(6);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            _inventory.SelectSlot(7);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            _inventory.SelectSlot(8);
         }
     }
 }
