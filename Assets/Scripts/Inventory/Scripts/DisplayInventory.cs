@@ -6,7 +6,13 @@ namespace Inventory.Scripts
     public class DisplayInventory : MonoBehaviour
     {
         public InventoryObject inventory;
+        private TextMeshProUGUI itemName;
         private readonly GameObject[] _instantiatedSlots = new GameObject[9];
+        
+        private void Awake()
+        {
+            itemName = GetComponentInChildren<TextMeshProUGUI>();
+        }
 
         private void Start()
         {
@@ -26,6 +32,8 @@ namespace Inventory.Scripts
                 if (i == inventory.selectedSlot) obj.transform.GetChild(1).gameObject.SetActive(true);
                 _instantiatedSlots[i] = obj;
             }
+            
+            UpdateItemNameText();
         }
 
         public void UpdateDisplay()
@@ -37,6 +45,11 @@ namespace Inventory.Scripts
         private Vector3 GetPosition(int i)
         {
             return new Vector3(-750 + i * 1700 / inventory.container.Count, 100, 0);
+        }
+        
+        private void UpdateItemNameText()
+        {
+            itemName.text = inventory.container[inventory.selectedSlot].itemObject.name;
         }
     }
 }
