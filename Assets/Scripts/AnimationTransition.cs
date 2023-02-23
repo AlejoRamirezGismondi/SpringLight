@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class SleepTransition : MonoBehaviour
+public class AnimationTransition : MonoBehaviour
 {
     public Animator transition;
     public float transitionTime = 1f;
@@ -12,7 +12,7 @@ public class SleepTransition : MonoBehaviour
         transition = GetComponentInChildren<Animator>();
     }
 
-    public void StartSleepTransition()
+    public void StartAnimationTransition()
     {
         StartCoroutine(StartAnimation());
     }

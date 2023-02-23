@@ -8,15 +8,18 @@ namespace Puzzle5
         [SerializeField] private GameObject target;
         private PlayerController _playerController;
         private ThinIce[] _thinIceList;
+        private AnimationTransition failAnimation;
 
         private void Awake()
         {
             _thinIceList = FindObjectsOfType<ThinIce>();
             _playerController = FindObjectOfType<PlayerController>();
+            failAnimation = FindObjectOfType<AnimationTransition>();
         }
 
         public void PlayerHasFallen(GameObject player)
         {
+            failAnimation.StartAnimationTransition();
             StartCoroutine(Teleport(player));
         }
 
@@ -45,6 +48,7 @@ namespace Puzzle5
 
         public void FailTeleported()
         {
+            failAnimation.StartAnimationTransition();
             ResetThinIce();
         }
 
