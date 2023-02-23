@@ -15,10 +15,12 @@ namespace SceneManagement
         [SerializeField] private GameObject startingPosition;
         private readonly List<ISceneObserver> _observers = new();
         private PlayerController _player;
+        private TransitionLoader _transitionLoader;
 
         private void Awake()
         {
             _player = FindObjectOfType<PlayerController>();
+            _transitionLoader = FindObjectOfType<TransitionLoader>();
             if (LastSceneSaver.LastSceneName == sceneName)
                 StartCoroutine(Teleporter.Teleport(_player, startingPosition.transform.position));
         }
@@ -29,7 +31,7 @@ namespace SceneManagement
             foreach (var observer in _observers)
                 observer.OnSceneAboutToChange();
             LastSceneSaver.LastSceneName = SceneManager.GetActiveScene().name;
-            SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+            _transitionLoader.StartTransition(sceneName);
         }
 
         public void AddObserver(ISceneObserver observer)

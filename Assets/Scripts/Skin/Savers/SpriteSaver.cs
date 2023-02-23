@@ -5,6 +5,7 @@ using UnityEngine;
 namespace Skin.Savers
 {
     /**
+     * DEPRECATED *
  * This class gets a deserialized data from the Network Manager and saves the individual images of the sprite to the Resources folder
  * Images are saved under /Character/Resources/name of the sprite
  */

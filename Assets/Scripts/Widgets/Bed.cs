@@ -9,6 +9,12 @@ namespace Widgets
     public class Bed : Interactable
     {
         private List<IDayChangeObserver> _dayChangeObservers;
+        private SleepTransition _sleepTransition;
+        
+        private void Awake()
+        {
+            _sleepTransition = FindObjectOfType<SleepTransition>();
+        }
     
         // Start is called before the first frame update
         void Start()
@@ -23,7 +29,7 @@ namespace Widgets
     
         private void Sleep()
         {
-            // TODO Play animation of fade out
+            _sleepTransition.StartSleepTransition();
             foreach (var dayChangeObserver in _dayChangeObservers) dayChangeObserver.NextDay();
         }
     }

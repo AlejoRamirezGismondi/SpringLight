@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Skin.Savers
 {
+    /*
+     * DEPRECATED *
+     */
     public static class RuntimeSpriteSaver
     {
         public static void SaveSprite(SpriteDto deserializedGetData)
