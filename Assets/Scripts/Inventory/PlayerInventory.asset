@@ -19,15 +19,15 @@ MonoBehaviour:
     amount: 1
   - itemObject: {fileID: 11400000, guid: e1b8062ab963e02469c523ed08f1dbf6, type: 2}
     amount: 1
-  - itemObject: {fileID: 11400000, guid: 8a3659f12e421e34abe4fdc54b5ad0ab, type: 2}
-    amount: 43
-  - itemObject: {fileID: 11400000, guid: d26b8601c8d4b4c49bba940868df39a5, type: 2}
-    amount: 9
-  - itemObject: {fileID: 11400000, guid: 482213485b71f0548b34f5ab47c6ece8, type: 2}
-    amount: 4
-  - itemObject: {fileID: 11400000, guid: 5c5de698c4ad8ff479b0b406e81eccb0, type: 2}
+  - itemObject: {fileID: 11400000, guid: f697e0b185564dc49953ffc542ff7609, type: 2}
+    amount: 20
+  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
     amount: 1
-  - itemObject: {fileID: 11400000, guid: 12b3b7ad0b772534fb28daf279e23465, type: 2}
+  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
+    amount: 1
+  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
+    amount: 1
+  - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
     amount: 1
   - itemObject: {fileID: 11400000, guid: 6f0cb0b3b39c05749a0095a6c75d9f15, type: 2}
     amount: 1

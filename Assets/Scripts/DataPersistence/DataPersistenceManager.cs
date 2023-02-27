@@ -75,10 +75,10 @@ namespace DataPersistence
 
         private void SaveGame()
         {
-            if (_gameData == null) return;
-            foreach (var dataPersistenceObject in _dataPersistenceObjects) dataPersistenceObject.SaveData(_gameData);
-            _gameData.lastSceneBuildIndex = SceneManager.GetActiveScene().buildIndex;
-            _fileDataHandler.Save(_gameData);
+            if (Instance._gameData == null) return;
+            foreach (var dataPersistenceObject in _dataPersistenceObjects) dataPersistenceObject.SaveData(Instance._gameData);
+            Instance._gameData.lastSceneBuildIndex = SceneManager.GetActiveScene().buildIndex;
+            _fileDataHandler.Save(Instance._gameData);
         }
 
         public void OnApplicationQuit()
