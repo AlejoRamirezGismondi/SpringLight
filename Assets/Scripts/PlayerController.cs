@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private bool _movementEnabled = true;
 
     private bool _wasMovingInX;
+    private Vector2 _previousInput;
     private Vector2 _input;
 
     [SerializeField] private LayerMask whatStopsMovement;
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour
     {
         _wasMovingInX = false;
         _input = Vector2.zero;
+        _previousInput = Vector2.zero;
         interactPoint = GameObject.FindGameObjectsWithTag("InteractPoint")[0];
         _interactTarget = interactPoint.GetComponent<InteractPoint>();
         _inventory = GetComponentInChildren<InventoryComponent>();
@@ -54,7 +56,14 @@ public class PlayerController : MonoBehaviour
             anim.SetBool(IsMoving, false);
             return;
         }
-        
+
+        if (!_input.Equals(_previousInput))
+        {
+            interactPoint.transform.localPosition = _input.normalized;
+            StartCoroutine(Rotate(_input));
+            return;
+        }
+
         // Always accepts the new input. Cannot walk diagonally
         if ((_input.x != 0) && (_input.y != 0))
         {
@@ -74,7 +83,6 @@ public class PlayerController : MonoBehaviour
             targetPos.y += _input.y;
         }
 
-        interactPoint.transform.localPosition = _input.normalized;
         StartCoroutine(Move(targetPos));
     }
 
@@ -96,6 +104,15 @@ public class PlayerController : MonoBehaviour
         transform.position = targetPos;
 
         _isMoving = false;
+    }
+
+    private IEnumerator Rotate(Vector2 direction)
+    {
+        _isMoving = true;
+        AnimateMovement();
+        yield return new WaitForSeconds(0.1f);
+        _isMoving = false;
+        _previousInput = direction;
     }
 
     public void EnableMovement()
